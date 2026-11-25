@@ -1,4 +1,4 @@
-# Turing machine: binary increment and counter
+# Turing machine: binary counter
 
 | File | What it does | States | Rules |
 | --- | --- | ---: | ---: |

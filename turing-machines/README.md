@@ -7,7 +7,7 @@ Turing machines with one tape, for [turingmachinesimulator.com](https://turingma
 - [examples/palindrome-build](examples/palindrome-build): builds a palindrome by appending the mirror image (the "Duplicate binary string" example from turingmachinesimulator.com, also for 0 to 3 and 0 to 9)
 - [examples/duplicate](examples/duplicate): a real copy of a binary string, with and without a separator
 - [examples/decimal-to-binary](examples/decimal-to-binary): decimal to binary, with the most significant bit on the left
-- [examples/increment](examples/increment): adding 1 to a binary number, and a counter that never stops
+- [examples/counter](examples/counter): a binary counter that never stops, and adding 1 once
 - [examples/turingmachine-io](examples/turingmachine-io): the examples of turingmachine.io by Andy Li, among them `repeat-01`, the first machine in Turing's 1936 paper
 
 Every example is there as `.txt` and `.yaml`. Paste the `.txt` into the editor on turingmachinesimulator.com or the `.yaml` on turingmachine.io, or run the `.txt` locally:
