@@ -1,10 +1,19 @@
-# Input: a string over the symbols 0,1,2,3
-# Output: the string followed by its mirror image (0123 -> 01233210)
+# Author: Gabriel Alvarez
 # Simulator: https://turingmachinesimulator.com
+# Initial state: qinit
+# Accepting state: qfin
+# Whole alphabet: 0,1,o,i
 
-# Original: "Duplicate binary string" example by Gabriel Alvarez.
-# Generalized 2026 by Manfred Scheucher from 0,1 to 0,1,2,3
-# (markers o,i,j,k).
+# Comments: We duplicate the size of
+# a binary string by concatenating
+# the string to its mirror image.
+# i/o will be used as "markers" for
+# the squares with 1's and 0's
+# (respectively).
+
+# Modified 2026 by Manfred Scheucher: generalized from 0,1 to 0,1,2,3
+# (markers o,i,j,k), and removed rules that never run
+# (qinit on markers, removing_the_markers on digits).
 
 # Duplicate strings on symbols 0,1,2,3
 # Converted from the turingmachinesimulator.com format with txt2yaml.py.
