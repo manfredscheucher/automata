@@ -6,11 +6,11 @@ Two kinds of machines: the `duplicate-0-*` files append the mirror image of the 
 
 The `duplicate-0-*` files are based on the "Duplicate binary string" example by Gabriel Alvarez on [turingmachinesimulator.com](https://turingmachinesimulator.com/). It marks the rightmost unmarked symbol (0 becomes `o`, 1 becomes `i`, ...), carries it to the right end and writes the marker there, and repeats until all symbols are marked. At the end it turns the markers back into symbols.
 
-The original works with 0 and 1. `duplicate-0-1.txt` is the original without 4 rules that never run. The other versions allow more symbols:
+The original, `duplicate-original.txt`, works with 0 and 1. `duplicate-0-1.txt` is the original without 4 rules that never run. The other versions allow more symbols:
 
 | File | Symbols | States | Rules |
 | --- | --- | ---: | ---: |
-| original | 0, 1 | 6 | 25 |
+| `duplicate-original.txt` (unchanged) | 0, 1 | 6 | 25 |
 | `duplicate-0-1.txt` | 0, 1 | 6 | 21 |
 | `duplicate-0-3.txt` | 0 to 3 | 8 | 55 |
 | `duplicate-0-9.txt` | 0 to 9 | 14 | 253 |

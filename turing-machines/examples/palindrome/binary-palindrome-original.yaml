@@ -1,0 +1,57 @@
+# Input: a binary number n
+# Ouput: accepts if n is a palindrome
+# Example: accepts 10101
+
+# Palindrome Algorithm
+# for Turing Machine Simulator
+# turingmachinesimulator.com
+
+# Binary palindrome
+# Converted from the turingmachinesimulator.com format with txt2yaml.py.
+# Accepting states: qAccept. All other stops reject.
+input: '10101'
+blank: ' '
+start state: q0
+table:
+  q0:
+    '0': {write: ' ', R: qRight0}
+    '1': {write: ' ', R: qRight1}
+    ' ': {R: qAccept}
+  qRight0:
+    '0': R
+    '1': R
+    ' ': {L: qSearch0L}
+  qRight1:
+    '0': R
+    '1': R
+    ' ': {L: qSearch1L}
+  qSearch0L:
+    '0': {write: ' ', L: q1}
+    '1': {R: qReject}
+    ' ': {R: qAccept}
+  q1:
+    '0': {write: ' ', L: qLeft0}
+    '1': {write: ' ', L: qLeft1}
+    ' ': {R: qAccept}
+  qSearch1L:
+    '1': {write: ' ', L: q1}
+    '0': {R: qReject}
+    ' ': {R: qAccept}
+  qLeft0:
+    '0': L
+    '1': L
+    ' ': {R: qSearch0R}
+  qLeft1:
+    '0': L
+    '1': L
+    ' ': {R: qSearch1R}
+  qSearch0R:
+    '0': {write: ' ', R: q0}
+    '1': {R: qReject}
+    ' ': {R: qAccept}
+  qSearch1R:
+    '1': {write: ' ', R: q0}
+    '0': {R: qReject}
+    ' ': {R: qAccept}
+  qReject:
+  qAccept:

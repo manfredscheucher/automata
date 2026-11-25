@@ -1,0 +1,62 @@
+# Author: Gabriel Alvarez
+# Simulator: https://turingmachinesimulator.com
+# Initial state: qinit
+# Accepting state: qfin
+# Whole alphabet: 0,1,o,i
+
+# Comments: We duplicate the size of
+# a binary string by concatenating
+# the string to its mirror image.
+# i/o will be used as "markers" for
+# the squares with 1's and 0's
+# (respectively).
+
+# Duplicate binary string
+# Converted from the turingmachinesimulator.com format with txt2yaml.py.
+# Accepting states: qfin. All other stops reject.
+input: '01001'
+blank: ' '
+start state: qinit
+table:
+  qinit:
+    '0': R
+    '1': R
+    'o': {write: '0', R}
+    'i': {write: '1', R}
+    ' ': {L: copying_from_right_to_left}
+  copying_from_right_to_left:
+    # We place a marker (o/i) over the
+    # first number found. We ignore the
+    # squares already marked
+    '0': {write: 'o', R: copying_0_to_the_right}
+    '1': {write: 'i', R: copying_1_to_the_right}
+    'o': L
+    'i': L
+    # When we finished copying the whole
+    # string --> it's time to remove the
+    # markers
+    ' ': {R: removing_the_markers}
+  copying_0_to_the_right:
+    # If we find a blank square -->
+    # we copy our value (marked) and
+    # come back
+    ' ': {write: 'o', L: copying_from_right_to_left}
+    # If we find a non-blank square -->
+    # we ignore it and keep moving right
+    '0': R
+    '1': R
+    'o': R
+    'i': R
+  copying_1_to_the_right:
+    ' ': {write: 'i', L: copying_from_right_to_left}
+    '0': R
+    '1': R
+    'o': R
+    'i': R
+  removing_the_markers:
+    'o': {write: '0', R}
+    'i': {write: '1', R}
+    '0': L
+    '1': L
+    ' ': {R: qfin}
+  qfin:
