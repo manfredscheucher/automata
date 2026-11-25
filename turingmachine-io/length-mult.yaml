@@ -1,0 +1,65 @@
+# multiplied lengths
+# Ported from the turingmachine.io example lengthMult
+# by Andy Li, https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see LICENSE).
+# The blank ' ' is written as _ here.
+# Example input: aabbbcccccc (try abc, b, aabcbc, aabcc, aabbbbcccccccc)
+
+# Decides the language { a^(i)b^(j)c^(k) | i*j = k and i,j,k ≥ 1 }.
+# (a's followed by b's then c's,
+# where the number of a's multiplied by the number of b's
+# equals the number of c's.)
+
+# multiplied lengths
+# Converted from the turingmachinesimulator.com format with txt2yaml.py.
+# Accepting states: accept. All other stops reject.
+input: 'aabbbcccccc'
+blank: ' '
+start state: start
+table:
+  start:
+    # Check for the form a^(i)b^(j)c^(k) where i,j,k ≥ 1.
+    'a': {R: a+}
+  a+:
+    'a': R
+    'b': {R: b+}
+  b+:
+    'b': R
+    'c': {R: c+}
+  c+:
+    'c': R
+    ' ': {L: left}
+  left:
+    'a': L
+    'b': L
+    'c': L
+    ' ': {R: eachA}
+  eachA:
+    # Then check that i*j = k.
+    # The approach is two nested loops:
+    # For each 'a':
+    # For each 'b':
+    # Mark one 'c'
+    # At the end, check that all c's are marked.
+    'a': {write: ' ', R: eachB}
+    'b': {R: scan}
+  eachB:
+    'a': R
+    'b': {write: 'B', R: markC}
+    'C': {L: nextA}
+  scan:
+    'b': R
+    'C': R
+    ' ': {R: accept}
+  markC:
+    'b': R
+    'C': R
+    'c': {write: 'C', L: nextB}
+  nextA:
+    'a': L
+    'B': {write: 'b', L}
+    ' ': {R: eachA}
+  nextB:
+    'b': L
+    'C': L
+    'B': {R: eachB}
+  accept:

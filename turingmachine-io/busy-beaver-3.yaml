@@ -1,0 +1,34 @@
+# 3-state busy beaver
+# Ported from the turingmachine.io example busyBeaver3
+# by Andy Li, https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see LICENSE).
+# The blank '0' is written as _ here.
+# Example input: none, start with an empty tape.
+
+# A 3-state 2-symbol busy beaver for most non-blank symbols.
+# It takes 13 steps and leaves 6 non-blank symbols on the tape.
+
+# What's a "busy beaver"?
+# Suppose every possible Turing machine with n states and k symbols
+# (for instance, 3 states and 2 symbols) were started on
+# a blank tape with no input.
+# Some of the machines would never halt. Out of the ones that do halt,
+# a machine that leaves the most non-blank symbols on the tape
+# is called a busy beaver.
+
+# 3-state busy beaver
+# Converted from the turingmachinesimulator.com format with txt2yaml.py.
+# Accepting states: H. All other stops reject.
+input: ''
+blank: ' '
+start state: A
+table:
+  A:
+    ' ': {write: '1', R: B}
+    '1': {L: C}
+  B:
+    ' ': {write: '1', L: A}
+    '1': R
+  C:
+    ' ': {write: '1', L: B}
+    '1': {R: H}
+  H:

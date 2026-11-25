@@ -1,0 +1,89 @@
+# Input: a string over the symbols 0,1,2,3
+# Output: the string followed by its mirror image (0123 -> 01233210)
+# Simulator: https://turingmachinesimulator.com
+
+# Original: "Duplicate binary string" example by Gabriel Alvarez.
+# Generalized 2026 by Manfred Scheucher from 0,1 to 0,1,2,3
+# (markers o,i,j,k).
+
+# Duplicate strings on symbols 0,1,2,3
+# Converted from the turingmachinesimulator.com format with txt2yaml.py.
+# Accepting states: qfin. All other stops reject.
+input: '0123'
+blank: ' '
+start state: qinit
+table:
+  qinit:
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    ' ': {L: copying_from_right_to_left}
+  copying_from_right_to_left:
+    # We place a marker (o/i) over the
+    # first number found. We ignore the
+    # squares already marked
+    '0': {write: 'o', R: copying_0_to_the_right}
+    '1': {write: 'i', R: copying_1_to_the_right}
+    '2': {write: 'j', R: copying_2_to_the_right}
+    '3': {write: 'k', R: copying_3_to_the_right}
+    'o': L
+    'i': L
+    'j': L
+    'k': L
+    # When we finished copying the whole
+    # string --> it's time to remove the
+    # markers
+    ' ': {R: removing_the_markers}
+  copying_0_to_the_right:
+    # If we find a blank square -->
+    # we copy our value (marked) and
+    # come back
+    ' ': {write: 'o', L: copying_from_right_to_left}
+    # If we find a non-blank square -->
+    # we ignore it and keep moving right
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+  copying_1_to_the_right:
+    ' ': {write: 'i', L: copying_from_right_to_left}
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+  copying_2_to_the_right:
+    ' ': {write: 'j', L: copying_from_right_to_left}
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+  copying_3_to_the_right:
+    ' ': {write: 'k', L: copying_from_right_to_left}
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+  removing_the_markers:
+    'o': {write: '0', R}
+    'i': {write: '1', R}
+    'j': {write: '2', R}
+    'k': {write: '3', R}
+    ' ': {R: qfin}
+  qfin:

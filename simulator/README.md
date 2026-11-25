@@ -25,6 +25,17 @@ python3 minituring.py ../palindrome/binary-palindrome-simplified.txt 11011
 
 It prints every step with the state and the tape (head in `[ ]`), and stops after 100000 steps if the machine doesn't halt.
 
+## Convert to turingmachine.io
+
+`txt2yaml.py` converts a program to the YAML format of [turingmachine.io](https://turingmachine.io/), which also draws the states as a diagram:
+
+```bash
+python3 txt2yaml.py <program> [<input>] > <program>.yaml
+python3 txt2yaml.py ../palindrome/binary-palindrome-simplified.txt 11011 > binary-palindrome-simplified.yaml
+```
+
+turingmachine.io has no accepting states (a machine stops when no rule matches), so they are listed in a comment. It can only move left or right, so a rule that stays (`-`) moves right into a helper state that moves back left.
+
 ## Examples
 
 Run from this folder. The result column shows what is on the tape at the end.

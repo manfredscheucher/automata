@@ -1,0 +1,50 @@
+# Input: a binary string w
+# Output: ww, the string followed by a copy of itself (01001 -> 0100101001)
+# Simulator: https://turingmachinesimulator.com
+
+# Copies from left to right. Every symbol that is done becomes o (for 0)
+# or i (for 1): the original once it is copied, and the new copy at the end.
+# So the tape shows what is already copied. At the end all o and i turn
+# back into 0 and 1.
+
+# Duplicate binary string
+# Converted from the turingmachinesimulator.com format with txt2yaml.py.
+# Accepting states: done. All other stops reject.
+input: '01001'
+blank: ' '
+start state: pick
+table:
+  pick:
+    # Skip what is already copied and take the next 0 or 1.
+    # If there is none left, everything is copied.
+    'o': R
+    'i': R
+    '0': {write: 'o', R: carry0}
+    '1': {write: 'i', R: carry1}
+    ' ': {L: restore}
+  carry0:
+    # Carry the symbol to the right end and write it there as o or i.
+    '0': R
+    '1': R
+    'o': R
+    'i': R
+    ' ': {write: 'o', L: back}
+  carry1:
+    '0': R
+    '1': R
+    'o': R
+    'i': R
+    ' ': {write: 'i', L: back}
+  restore:
+    # Turn o and i back into 0 and 1.
+    'o': {write: '0', L}
+    'i': {write: '1', L}
+    ' ': {R: done}
+  back:
+    # Go back to the left end.
+    '0': L
+    '1': L
+    'o': L
+    'i': L
+    ' ': {R: pick}
+  done:

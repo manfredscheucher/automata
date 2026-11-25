@@ -10,7 +10,7 @@ So far: Turing machines with one tape, in the format of [turingmachinesimulator.
 - [increment](increment): adding 1 to a binary number, and a counter that never stops
 - [turingmachine-io](turingmachine-io): the examples of turingmachine.io, converted to the turingmachinesimulator.com format, among them `repeat-01`, the first machine in Turing's 1936 paper
 
-Paste a program into the editor on turingmachinesimulator.com, or run it locally:
+Every example is there in two formats: `.txt` for [turingmachinesimulator.com](https://turingmachinesimulator.com/) and `.yaml` for [turingmachine.io](https://turingmachine.io/). Paste one into the editor on either site, or run the `.txt` locally:
 
 ```bash
 python3 simulator/minituring.py palindrome/binary-palindrome-simplified.txt 11011

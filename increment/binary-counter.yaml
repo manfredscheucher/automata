@@ -1,0 +1,36 @@
+# Input: nothing (the tape starts with 0) or a binary number n
+# Output: never stops, the tape counts 0, 1, 10, 11, ... (or n, n+1, n+2, ...)
+# Simulator: https://turingmachinesimulator.com
+
+# The increment from binary-increment.txt in a loop: after each +1 it goes
+# to the rightmost digit again instead of stopping.
+
+# Based on the turingmachine.io example binaryIncrement by Andy Li,
+# https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see ../turingmachine-io/LICENSE).
+
+# Binary counter
+# Converted from the turingmachinesimulator.com format with txt2yaml.py.
+# This machine never stops.
+input: ''
+blank: ' '
+start state: start
+table:
+  start:
+    # On a blank tape write 0 first. Otherwise start with the input.
+    ' ': {write: '0', R: rightBack}
+    '0': {R: right}
+    '1': {R: right}
+  right:
+    # Go to the rightmost digit.
+    '0': R
+    '1': R
+    ' ': {L: carry}
+  carry:
+    # Add 1: 1 + carry = 0, carry 1 to the next digit.
+    '1': {write: '0', L}
+    # 0 + carry = 1, then start over with the next +1.
+    '0': {write: '1', R: right}
+    ' ': {write: '1', R: right}
+  rightBack:
+    # helper: move back left, for a rule that stays in place
+    ['0', '1', ' ']: {L: right}

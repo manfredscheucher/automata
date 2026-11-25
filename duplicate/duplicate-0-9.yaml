@@ -1,0 +1,293 @@
+# Input: a string over the symbols 0 to 9
+# Output: the string followed by its mirror image (0123 -> 01233210)
+# Simulator: https://turingmachinesimulator.com
+
+# Original: "Duplicate binary string" example by Gabriel Alvarez.
+# Generalized 2026 by Manfred Scheucher from 0,1 to 0 to 9
+# (markers o,i,j,k for 0 to 3 and a,b,c,d,e,f for 4 to 9).
+
+# Duplicate strings on symbols 0 to 9
+# Converted from the turingmachinesimulator.com format with txt2yaml.py.
+# Accepting states: qfin. All other stops reject.
+input: '0123456789'
+blank: ' '
+start state: qinit
+table:
+  qinit:
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    '4': R
+    '5': R
+    '6': R
+    '7': R
+    '8': R
+    '9': R
+    ' ': {L: copying_from_right_to_left}
+  copying_from_right_to_left:
+    # We place a marker (o, i, j, ...) over the
+    # first number found. We ignore the
+    # squares already marked
+    '0': {write: 'o', R: copying_0_to_the_right}
+    '1': {write: 'i', R: copying_1_to_the_right}
+    '2': {write: 'j', R: copying_2_to_the_right}
+    '3': {write: 'k', R: copying_3_to_the_right}
+    '4': {write: 'a', R: copying_4_to_the_right}
+    '5': {write: 'b', R: copying_5_to_the_right}
+    '6': {write: 'c', R: copying_6_to_the_right}
+    '7': {write: 'd', R: copying_7_to_the_right}
+    '8': {write: 'e', R: copying_8_to_the_right}
+    '9': {write: 'f', R: copying_9_to_the_right}
+    'o': L
+    'i': L
+    'j': L
+    'k': L
+    'a': L
+    'b': L
+    'c': L
+    'd': L
+    'e': L
+    'f': L
+    # When we finished copying the whole
+    # string --> it's time to remove the
+    # markers
+    ' ': {R: removing_the_markers}
+  copying_0_to_the_right:
+    # If we find a blank square -->
+    # we copy our value (marked) and
+    # come back
+    ' ': {write: 'o', L: copying_from_right_to_left}
+    # If we find a non-blank square -->
+    # we ignore it and keep moving right
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    '4': R
+    '5': R
+    '6': R
+    '7': R
+    '8': R
+    '9': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+    'a': R
+    'b': R
+    'c': R
+    'd': R
+    'e': R
+    'f': R
+  copying_1_to_the_right:
+    ' ': {write: 'i', L: copying_from_right_to_left}
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    '4': R
+    '5': R
+    '6': R
+    '7': R
+    '8': R
+    '9': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+    'a': R
+    'b': R
+    'c': R
+    'd': R
+    'e': R
+    'f': R
+  copying_2_to_the_right:
+    ' ': {write: 'j', L: copying_from_right_to_left}
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    '4': R
+    '5': R
+    '6': R
+    '7': R
+    '8': R
+    '9': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+    'a': R
+    'b': R
+    'c': R
+    'd': R
+    'e': R
+    'f': R
+  copying_3_to_the_right:
+    ' ': {write: 'k', L: copying_from_right_to_left}
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    '4': R
+    '5': R
+    '6': R
+    '7': R
+    '8': R
+    '9': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+    'a': R
+    'b': R
+    'c': R
+    'd': R
+    'e': R
+    'f': R
+  copying_4_to_the_right:
+    ' ': {write: 'a', L: copying_from_right_to_left}
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    '4': R
+    '5': R
+    '6': R
+    '7': R
+    '8': R
+    '9': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+    'a': R
+    'b': R
+    'c': R
+    'd': R
+    'e': R
+    'f': R
+  copying_5_to_the_right:
+    ' ': {write: 'b', L: copying_from_right_to_left}
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    '4': R
+    '5': R
+    '6': R
+    '7': R
+    '8': R
+    '9': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+    'a': R
+    'b': R
+    'c': R
+    'd': R
+    'e': R
+    'f': R
+  copying_6_to_the_right:
+    ' ': {write: 'c', L: copying_from_right_to_left}
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    '4': R
+    '5': R
+    '6': R
+    '7': R
+    '8': R
+    '9': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+    'a': R
+    'b': R
+    'c': R
+    'd': R
+    'e': R
+    'f': R
+  copying_7_to_the_right:
+    ' ': {write: 'd', L: copying_from_right_to_left}
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    '4': R
+    '5': R
+    '6': R
+    '7': R
+    '8': R
+    '9': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+    'a': R
+    'b': R
+    'c': R
+    'd': R
+    'e': R
+    'f': R
+  copying_8_to_the_right:
+    ' ': {write: 'e', L: copying_from_right_to_left}
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    '4': R
+    '5': R
+    '6': R
+    '7': R
+    '8': R
+    '9': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+    'a': R
+    'b': R
+    'c': R
+    'd': R
+    'e': R
+    'f': R
+  copying_9_to_the_right:
+    ' ': {write: 'f', L: copying_from_right_to_left}
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    '4': R
+    '5': R
+    '6': R
+    '7': R
+    '8': R
+    '9': R
+    'o': R
+    'i': R
+    'j': R
+    'k': R
+    'a': R
+    'b': R
+    'c': R
+    'd': R
+    'e': R
+    'f': R
+  removing_the_markers:
+    'o': {write: '0', R}
+    'i': {write: '1', R}
+    'j': {write: '2', R}
+    'k': {write: '3', R}
+    'a': {write: '4', R}
+    'b': {write: '5', R}
+    'c': {write: '6', R}
+    'd': {write: '7', R}
+    'e': {write: '8', R}
+    'f': {write: '9', R}
+    ' ': {R: qfin}
+  qfin:

@@ -1,0 +1,36 @@
+# Input: a binary number n
+# Output: n+1 (1011 -> 1100)
+# Simulator: https://turingmachinesimulator.com
+
+# Goes to the rightmost digit and adds 1 there: a 1 becomes 0 and the
+# carry moves one digit to the left, a 0 (or a blank) becomes 1 and the
+# carry is done. Then it goes back to the first digit and stops.
+
+# Based on the turingmachine.io example binaryIncrement by Andy Li,
+# https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see ../turingmachine-io/LICENSE).
+# Going back to the first digit is the first exercise there.
+
+# Binary increment
+# Converted from the turingmachinesimulator.com format with txt2yaml.py.
+# Accepting states: done. All other stops reject.
+input: '1011'
+blank: ' '
+start state: right
+table:
+  right:
+    # Go to the rightmost digit.
+    '0': R
+    '1': R
+    ' ': {L: carry}
+  carry:
+    # Add 1: 1 + carry = 0, carry 1 to the next digit.
+    '1': {write: '0', L}
+    # 0 + carry = 1, done. A blank on the left counts as 0 (111 -> 1000).
+    '0': {write: '1', L: left}
+    ' ': {write: '1', L: left}
+  left:
+    # Go back to the first digit and stop.
+    '0': L
+    '1': L
+    ' ': {R: done}
+  done:
