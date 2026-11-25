@@ -1,6 +1,6 @@
 # Turing machine: decimal to binary
 
-`decimal-to-binary.txt` turns a decimal number into a binary number with the most significant bit on the left: `13` becomes `1101`, `100` becomes `1100100` (10 states, 75 rules).
+`decimal-to-binary.txt` turns a decimal number into binary, with the most significant bit on the left: `13` becomes `1101`, `100` becomes `1100100` (10 states, 75 rules).
 
 It halves the number again and again from left to right, like long division. The states `halve0` and `halve1` remember the remainder so far. At the right end the remainder is the next bit, and it goes in front of the bits behind the `#`. Tape: `<number> # <bits>`.
 

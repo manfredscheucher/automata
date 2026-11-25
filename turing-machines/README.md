@@ -1,16 +1,21 @@
 # Turing machines
 
-Turing machines with one tape, for [turingmachinesimulator.com](https://turingmachinesimulator.com/) (`.txt`) and [turingmachine.io](https://turingmachine.io/) (`.yaml`).
+Turing machines with one tape. Every example is there twice: as `.txt` for [turingmachinesimulator.com](https://turingmachinesimulator.com/) and as `.yaml` for [turingmachine.io](https://turingmachine.io/). Paste one into the editor on the site, or run the `.txt` with the simulator in this repo.
 
-- [simulator](simulator): minituring, a minimal Turing machine simulator in Python, and converters between the two formats
-- [examples/palindrome-check](examples/palindrome-check): checks whether a binary string is a palindrome, a simplified version of the "Binary palindrome" example from turingmachinesimulator.com
-- [examples/palindrome-build](examples/palindrome-build): builds a palindrome by appending the mirror image (the "Duplicate binary string" example from turingmachinesimulator.com, also for 0 to 3 and 0 to 9)
-- [examples/duplicate](examples/duplicate): a real copy of a binary string, with and without a separator
-- [examples/decimal-to-binary](examples/decimal-to-binary): decimal to binary, with the most significant bit on the left
-- [examples/counter](examples/counter): a binary counter that never stops, and adding 1 once
-- [examples/turingmachine-io](examples/turingmachine-io): the examples of turingmachine.io by Andy Li, among them `repeat-01`, the first machine in Turing's 1936 paper
+## Examples
 
-Every example is there as `.txt` and `.yaml`. Paste the `.txt` into the editor on turingmachinesimulator.com or the `.yaml` on turingmachine.io, or run the `.txt` locally:
+| Folder | What the machines do |
+| --- | --- |
+| [palindrome-check](examples/palindrome-check) | check whether a binary string is a palindrome |
+| [palindrome-build](examples/palindrome-build) | build a palindrome by appending the mirror image: `0123` becomes `01233210` |
+| [duplicate](examples/duplicate) | duplicate a binary string: `01001` becomes `0100101001` or `01001#01001` |
+| [counter](examples/counter) | count in binary forever, or add 1 once |
+| [decimal-to-binary](examples/decimal-to-binary) | turn a decimal number into binary: `13` becomes `1101` |
+| [turingmachine-io](examples/turingmachine-io) | the 15 examples of turingmachine.io by Andy Li, among them binary addition and multiplication, two busy beavers, and the first machine in Turing's 1936 paper |
+
+## Simulator
+
+[simulator](simulator) has minituring, a minimal Turing machine simulator in Python, and two scripts that convert between `.txt` and `.yaml`.
 
 ```bash
 python3 simulator/minituring.py examples/palindrome-check/palindrome-check-simplified.txt 11011
