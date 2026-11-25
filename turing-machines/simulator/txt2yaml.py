@@ -113,7 +113,10 @@ def convert(text, word=""):
             if write != read:
                 parts.append(f"write: {symbol(write)}")
             parts.append(direction if target == state else f"{direction}: {target}")
-            action = parts[0] if len(parts) == 1 and target == state else "{" + ", ".join(parts) + "}"
+            if len(parts) == 1 and target == state:
+                action = parts[0]                       # just R or L
+            else:
+                action = "{" + ", ".join(parts) + "}"   # e.g. {write: 'o', R: carry0}
             out.append(f"    {symbol(read)}: {action}")
     for target, helper in helpers.items():
         out.append(f"  {helper}:")

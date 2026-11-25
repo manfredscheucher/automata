@@ -1,5 +1,5 @@
 // unary multiplication
-// Ported from the turingmachine.io example unaryMult by Andy Li (BSD 3-Clause):
+// Ported from the turingmachine.io example unaryMult by Andy Li (BSD 3-Clause license):
 // https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/unaryMult.yaml
 // The blank ' ' is written as _ here.
 // Example input: ||*||| (try '*', '|*|||', '||||*||')

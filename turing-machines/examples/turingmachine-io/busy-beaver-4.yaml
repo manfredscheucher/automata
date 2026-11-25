@@ -1,5 +1,5 @@
 # 4-state busy beaver
-# Ported from the turingmachine.io example busyBeaver4 by Andy Li (BSD 3-Clause):
+# Ported from the turingmachine.io example busyBeaver4 by Andy Li (BSD 3-Clause license):
 # https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/busyBeaver4.yaml
 # The blank '0' is written as _ here.
 # Example input: none, start with an empty tape.

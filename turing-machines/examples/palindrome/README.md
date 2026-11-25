@@ -17,4 +17,8 @@ The original example is by Martin Ugarte (Copyleft 2017), from [turingmachinesim
 
 ## Run
 
-Open [turingmachinesimulator.com](https://turingmachinesimulator.com/), paste `binary-palindrome-simplified.txt` into the editor, compile and run it with an input like `10101`.
+Open [turingmachinesimulator.com](https://turingmachinesimulator.com/), paste `binary-palindrome-simplified.txt` into the editor, compile and run it with an input like `10101`. Or run it locally:
+
+```bash
+python3 ../../simulator/minituring.py binary-palindrome-simplified.txt 10101
+```

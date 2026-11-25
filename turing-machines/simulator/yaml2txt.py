@@ -109,7 +109,7 @@ def parse(text):
     lines = text.split("\n")
     name = None
     if "source code: |" in lines:
-        name = next(l.split(":", 1)[1].strip() for l in lines if l.startswith("name:"))
+        name = next(line.split(":", 1)[1].strip() for line in lines if line.startswith("name:"))
         body = []
         for line in lines[lines.index("source code: |") + 1:]:
             if line and not line.startswith("  "):
@@ -119,7 +119,7 @@ def parse(text):
         body = lines
 
     settings, synonyms, table, states = {}, {}, {}, []
-    header, notes, footer = [], {}, []   # comments before the table, per state, after the table
+    header, notes = [], {}               # comments before the table and per state
     pending = []                         # comment lines waiting for the next state
     section, state = None, None
     for raw in body:
@@ -158,7 +158,7 @@ def parse(text):
             pending = []
             for i, symbol in enumerate(parse_symbols(key)):
                 table[state].append((symbol, parse_action(value, synonyms), rule_notes if i == 0 else []))
-    footer = pending
+    footer = pending                     # comments after the table
     return name, settings, states, table, header, notes, footer
 
 
@@ -168,7 +168,7 @@ def comment_block(lines):
         lines = lines[1:]
     while lines and not lines[-1].strip():
         lines = lines[:-1]
-    return [("//" + l).rstrip() for l in lines]
+    return [("//" + line).rstrip() for line in lines]
 
 
 def accepting_states(states, table, header):

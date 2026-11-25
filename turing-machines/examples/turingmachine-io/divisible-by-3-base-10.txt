@@ -1,5 +1,5 @@
 // divisible by 3 (base 10)
-// Ported from the turingmachine.io example divisibleBy3Base10 by Andy Li (BSD 3-Clause):
+// Ported from the turingmachine.io example divisibleBy3Base10 by Andy Li (BSD 3-Clause license):
 // https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/divisibleBy3Base10.yaml
 // The blank ' ' is written as _ here.
 // Example input: 4728 (try 42, 57, 1337, 5328, 7521, 314159265)

@@ -1,5 +1,5 @@
 // binary multiplication
-// Ported from the turingmachine.io example binaryMult by Andy Li (BSD 3-Clause):
+// Ported from the turingmachine.io example binaryMult by Andy Li (BSD 3-Clause license):
 // https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/binaryMult.yaml
 // The blank ' ' is written as _ here.
 // Example input: 11*101 (3*5 = 15 (1111 in binary))

@@ -16,9 +16,12 @@
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 # Original: "Decimal to binary" example on turingmachinesimulator.com.
-# Modified 2026 by Manfred Scheucher: the binary result has its most significant
-# bit on the left (1101 for 13, the original writes 1011). Changed are the rules
-# setrest0,1 and setrest1,0: a new bit goes in front and the others move right.
+# The original turns a decimal number (most significant digit on the left)
+# into a binary number with the least significant bit on the left: 13 -> 1011.
+# Modified 2026 by Manfred Scheucher: the binary number has its most
+# significant bit on the left, like the decimal input: 13 -> 1101.
+# How: only the rules setrest0,1 and setrest1,0 are changed. Each new bit goes
+# in front of the others, and the others move one cell to the right.
 # Like the original, this version is under CC BY-NC-SA 3.0.
 
 # Decimal to binary

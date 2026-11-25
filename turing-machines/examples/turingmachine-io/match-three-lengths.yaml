@@ -1,5 +1,5 @@
 # three equal lengths
-# Ported from the turingmachine.io example matchThreeLengths by Andy Li (BSD 3-Clause):
+# Ported from the turingmachine.io example matchThreeLengths by Andy Li (BSD 3-Clause license):
 # https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/matchThreeLengths.yaml
 # The blank ' ' is written as _ here.
 # Example input: aabbcc (try bac, aabc, aabcc, aabcbc)

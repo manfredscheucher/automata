@@ -1,0 +1,112 @@
+# Input: a decimal number n
+# Output: n in binary, most significant bit on the left (13 -> 1101)
+# Simulator: https://turingmachinesimulator.com
+
+# Halves the number again and again, from left to right like long division.
+# The state remembers the remainder so far (halve0, halve1). At the right end
+# the remainder is the next bit. It goes in front of the bits behind the #,
+# so the most significant bit ends up on the left.
+# Tape: <number> # <bits>
+# See also the "Decimal to binary" example on turingmachinesimulator.com,
+# which halves from right to left.
+
+# Decimal to binary
+# Converted from the turingmachinesimulator.com format with txt2yaml.py.
+# Accepting states: done. All other stops reject.
+input: '13'
+blank: ' '
+start state: start
+table:
+  start:
+    # Put a # behind the number, then go back to its first digit.
+    '0': R
+    '1': R
+    '2': R
+    '3': R
+    '4': R
+    '5': R
+    '6': R
+    '7': R
+    '8': R
+    '9': R
+    ' ': {write: '#', L: toStart}
+  toStart:
+    '0': L
+    '1': L
+    '2': L
+    '3': L
+    '4': L
+    '5': L
+    '6': L
+    '7': L
+    '8': L
+    '9': L
+    ' ': {R: lead0}
+  lead0:
+    # Leading digits: a 0 in the result is erased, so the number gets shorter.
+    # lead0 and halve0: remainder 0 so far, lead1 and halve1: remainder 1 so far.
+    '0': {write: ' ', R}
+    '1': {write: ' ', R: lead1}
+    '2': {write: '1', R: halve0}
+    '3': {write: '1', R: halve1}
+    '4': {write: '2', R: halve0}
+    '5': {write: '2', R: halve1}
+    '6': {write: '3', R: halve0}
+    '7': {write: '3', R: halve1}
+    '8': {write: '4', R: halve0}
+    '9': {write: '4', R: halve1}
+    # The number is 0: erase the # and stop on the first bit.
+    '#': {write: ' ', R: done}
+  lead1:
+    '0': {write: '5', R: halve0}
+    '1': {write: '5', R: halve1}
+    '2': {write: '6', R: halve0}
+    '3': {write: '6', R: halve1}
+    '4': {write: '7', R: halve0}
+    '5': {write: '7', R: halve1}
+    '6': {write: '8', R: halve0}
+    '7': {write: '8', R: halve1}
+    '8': {write: '9', R: halve0}
+    '9': {R: halve1}
+    '#': {R: insert1}
+  halve0:
+    # Halve digit by digit: with remainder 1, the digit counts 10 more.
+    '0': R
+    '1': {write: '0', R: halve1}
+    '2': {write: '1', R}
+    '3': {write: '1', R: halve1}
+    '4': {write: '2', R}
+    '5': {write: '2', R: halve1}
+    '6': {write: '3', R}
+    '7': {write: '3', R: halve1}
+    '8': {write: '4', R}
+    '9': {write: '4', R: halve1}
+    # At the # the remainder is the next bit. Put it in front of the bits;
+    # insert0 and insert1 carry the bit that has to move one cell to the right.
+    '#': {R: insert0}
+  halve1:
+    '0': {write: '5', R: halve0}
+    '1': {write: '5', R}
+    '2': {write: '6', R: halve0}
+    '3': {write: '6', R}
+    '4': {write: '7', R: halve0}
+    '5': {write: '7', R}
+    '6': {write: '8', R: halve0}
+    '7': {write: '8', R}
+    '8': {write: '9', R: halve0}
+    '9': R
+    '#': {R: insert1}
+  insert0:
+    '0': R
+    '1': {write: '0', R: insert1}
+    ' ': {write: '0', L: back}
+  insert1:
+    '0': {write: '1', R: insert0}
+    '1': R
+    ' ': {write: '1', L: back}
+  back:
+    # Go back to the first digit of the number for the next halving.
+    '0': L
+    '1': L
+    '#': {L: toStart}
+  done:

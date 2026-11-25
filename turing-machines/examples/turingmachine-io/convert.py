@@ -11,15 +11,19 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 import yaml2txt  # noqa: E402
 
 if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        sys.exit("usage: python3 convert.py <turing-machine-viz>/src/examples <output folder>")
     src, dst = sys.argv[1], sys.argv[2]
     for f in sorted(os.listdir(src)):
         if not f.endswith(".yaml") or f.startswith("_"):
             continue
-        name, settings, states, table, header, notes, footer = yaml2txt.parse(open(os.path.join(src, f)).read())
-        intro = [f"// Ported from the turingmachine.io example {f[:-5]} by Andy Li (BSD 3-Clause):",
+        with open(os.path.join(src, f)) as yaml_file:
+            name, settings, states, table, header, notes, footer = yaml2txt.parse(yaml_file.read())
+        intro = [f"// Ported from the turingmachine.io example {f[:-5]} by Andy Li (BSD 3-Clause license):",
                  f"// https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/{f}"]
         # binaryIncrement -> binary-increment.txt, divisibleBy3Base10 -> divisible-by-3-base-10.txt
         out = re.sub(r"(?<=[a-z])(?=[A-Z0-9])|(?<=[0-9])(?=[A-Z])", "-", f[:-5]).lower() + ".txt"
         program = yaml2txt.write_program(name, settings, states, table, header, notes, footer, intro)
-        open(os.path.join(dst, out), "w").write(program)
+        with open(os.path.join(dst, out), "w") as txt_file:
+            txt_file.write(program)
         print(out, len(states), "states", sum(len(r) for r in table.values()), "rules")

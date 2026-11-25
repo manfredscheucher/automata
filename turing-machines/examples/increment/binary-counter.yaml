@@ -2,10 +2,10 @@
 # Output: never stops, the tape counts 0, 1, 10, 11, ... (or n, n+1, n+2, ...)
 # Simulator: https://turingmachinesimulator.com
 
-# The increment from binary-increment.txt in a loop: after each +1 it goes
+# The increment from binary-increment-back.txt in a loop: after each +1 it goes
 # to the rightmost digit again instead of stopping.
 
-# Based on the turingmachine.io example binaryIncrement by Andy Li (BSD 3-Clause):
+# Based on the turingmachine.io example binaryIncrement by Andy Li (BSD 3-Clause license):
 # https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/binaryIncrement.yaml
 
 # Binary counter

@@ -1,5 +1,5 @@
 # equal strings
-# Ported from the turingmachine.io example matchBinaryStrings by Andy Li (BSD 3-Clause):
+# Ported from the turingmachine.io example matchBinaryStrings by Andy Li (BSD 3-Clause license):
 # https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/matchBinaryStrings.yaml
 # The blank ' ' is written as _ here.
 # Example input: 01001#01001 (try '#', '1#10', '10#1', '10#10')

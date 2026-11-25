@@ -9,7 +9,7 @@ Example: python3 minituring.py binary-palindrome-simplified.txt 11011
 import sys
 
 BLANK = "_"
-MAX_STEPS = 100_000                  # stop machines that never halt
+MAX_STEPS = 10_000                   # stop machines that never halt
 MOVES = {"<": -1, ">": +1, "-": 0}   # head moves left, right or stays
 
 
