@@ -1,13 +1,23 @@
-// Input: a binary number n, or nothing to start at 0
-// Output: never stops, the tape counts n+1, n+2, n+3, ...
+// Input: nothing (the tape starts with 0) or a binary number n
+// Output: never stops, the tape counts 0, 1, 10, 11, ... (or n, n+1, n+2, ...)
 // Simulator: https://turingmachinesimulator.com
 //
 // The increment from binary-increment.txt in a loop: after each +1 it goes
 // to the rightmost digit again instead of stopping.
 
 name: Binary counter
-init: right
+init: start
 accept: none
+
+// On a blank tape write 0 first. Otherwise start with the input.
+start,_
+right,0,-
+
+start,0
+right,0,>
+
+start,1
+right,1,>
 
 // Go to the rightmost digit.
 right,0

@@ -3,7 +3,7 @@
 | File | What it does | States | Rules |
 | --- | --- | ---: | ---: |
 | `binary-increment.txt` | adds 1 to a binary number and stops (`1011` -> `1100`) | 4 | 9 |
-| `binary-counter.txt` | adds 1 in a loop and never stops: 1, 10, 11, 100, ... | 2 | 6 |
+| `binary-counter.txt` | adds 1 in a loop and never stops; on a blank tape it writes 0 first: 0, 1, 10, 11, ... | 3 | 9 |
 
 Both go to the rightmost digit and add 1 there: a 1 becomes 0 and the carry moves one digit to the left, a 0 (or a blank) becomes 1. The increment then goes back to the first digit and stops, the counter goes to the rightmost digit again for the next +1.
 
