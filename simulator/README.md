@@ -40,3 +40,4 @@ Run from this folder. The result column shows what is on the tape at the end.
 | multiply two binary numbers | `python3 minituring.py ../turingmachine-io/binary-mult.txt '11*101'` | accepted after 116 steps, tape `1111` |
 | divisible by 3 | `python3 minituring.py ../turingmachine-io/divisible-by-3.txt 1001` | accepted after 5 steps, tape `1001` |
 | busy beaver with 3 states | `python3 minituring.py ../turingmachine-io/busy-beaver-3.txt ""` | accepted after 13 steps, tape `111111` |
+| Turing's first machine from 1936: 0 1 0 1 ... forever | `python3 minituring.py ../turingmachine-io/repeat-01.txt ""` | never stops, tape `0_1_0_1_...`; minituring stops it after 100000 steps |

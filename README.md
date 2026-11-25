@@ -8,7 +8,7 @@ So far: Turing machines with one tape, in the format of [turingmachinesimulator.
 - [palindrome](palindrome): a simplified version of the "Binary palindrome" example
 - [duplicate](duplicate): the "Duplicate binary string" example, generalized from 0,1 to 0 to 3 and 0 to 9, and a real copy, with and without a separator
 - [increment](increment): adding 1 to a binary number, and a counter that never stops
-- [turingmachine-io](turingmachine-io): the examples of turingmachine.io, converted to the turingmachinesimulator.com format
+- [turingmachine-io](turingmachine-io): the examples of turingmachine.io, converted to the turingmachinesimulator.com format, among them `repeat-01`, the first machine in Turing's 1936 paper
 
 Paste a program into the editor on turingmachinesimulator.com, or run it locally:
 
