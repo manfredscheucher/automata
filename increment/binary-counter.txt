@@ -4,6 +4,9 @@
 //
 // The increment from binary-increment.txt in a loop: after each +1 it goes
 // to the rightmost digit again instead of stopping.
+//
+// Based on the turingmachine.io example binaryIncrement by Andy Li,
+// https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see ../turingmachine-io/LICENSE).
 
 name: Binary counter
 init: start
