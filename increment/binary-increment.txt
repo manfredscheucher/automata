@@ -1,0 +1,42 @@
+// Input: a binary number n
+// Output: n+1 (1011 -> 1100)
+// Simulator: https://turingmachinesimulator.com
+//
+// Goes to the rightmost digit and adds 1 there: a 1 becomes 0 and the
+// carry moves one digit to the left, a 0 (or a blank) becomes 1 and the
+// carry is done. Then it goes back to the first digit and stops.
+
+name: Binary increment
+init: right
+accept: done
+
+// Go to the rightmost digit.
+right,0
+right,0,>
+
+right,1
+right,1,>
+
+right,_
+carry,_,<
+
+// Add 1: 1 + carry = 0, carry 1 to the next digit.
+carry,1
+carry,0,<
+
+// 0 + carry = 1, done. A blank on the left counts as 0 (111 -> 1000).
+carry,0
+left,1,<
+
+carry,_
+left,1,<
+
+// Go back to the first digit and stop.
+left,0
+left,0,<
+
+left,1
+left,1,<
+
+left,_
+done,_,>
