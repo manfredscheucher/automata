@@ -1,6 +1,6 @@
 # powers of two
-# Ported from the turingmachine.io example powersOfTwo
-# by Andy Li, https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see LICENSE).
+# Ported from the turingmachine.io example powersOfTwo by Andy Li (BSD 3-Clause):
+# https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/powersOfTwo.yaml
 # The blank ' ' is written as _ here.
 # Example input: 0000 (try '0', '000', '00000000')
 

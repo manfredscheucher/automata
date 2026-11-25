@@ -6,8 +6,8 @@
 # carry moves one digit to the left, a 0 (or a blank) becomes 1 and the
 # carry is done. Then it goes back to the first digit and stops.
 
-# Based on the turingmachine.io example binaryIncrement by Andy Li,
-# https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see ../turingmachine-io/LICENSE).
+# Based on the turingmachine.io example binaryIncrement by Andy Li (BSD 3-Clause):
+# https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/binaryIncrement.yaml
 # Going back to the first digit is the first exercise there.
 
 # Binary increment

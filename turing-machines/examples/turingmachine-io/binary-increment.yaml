@@ -1,6 +1,6 @@
 # binary increment
-# Ported from the turingmachine.io example binaryIncrement
-# by Andy Li, https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see LICENSE).
+# Ported from the turingmachine.io example binaryIncrement by Andy Li (BSD 3-Clause):
+# https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/binaryIncrement.yaml
 # The blank ' ' is written as _ here.
 # Example input: 1011
 

@@ -1,6 +1,6 @@
 # copy 1s
-# Ported from the turingmachine.io example copy1s
-# by Andy Li, https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see LICENSE).
+# Ported from the turingmachine.io example copy1s by Andy Li (BSD 3-Clause):
+# https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/copy1s.yaml
 # The blank '0' is written as _ here.
 # Example input: 111
 
