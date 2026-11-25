@@ -15,7 +15,7 @@
 // (markers o,i,j,k for 0 to 3 and a,b,c,d,e,f for 4 to 9), and removed rules that never run
 // (qinit on markers, removing_the_markers on digits).
 
-name: Duplicate strings on symbols 0 to 9
+name: Build palindrome, symbols 0 to 9
 init: qinit
 accept: qfin
 

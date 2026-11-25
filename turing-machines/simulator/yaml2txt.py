@@ -2,7 +2,7 @@
 to the turingmachinesimulator.com format, so it runs there and in minituring.py.
 
 Usage:   python3 yaml2txt.py <program.yaml>  > <program>.txt
-Example: python3 yaml2txt.py ../examples/palindrome/binary-palindrome-simplified.yaml
+Example: python3 yaml2txt.py ../examples/palindrome-check/palindrome-check-simplified.yaml
 
 Differences between the two formats:
 - The blank (often ' ') becomes _.

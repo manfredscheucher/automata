@@ -7,7 +7,7 @@
 # So the tape shows what is already copied. At the end all o and i turn
 # back into 0 and 1.
 
-# Copy binary string (no separator)
+# Duplicate binary string (ww)
 # Converted from the turingmachinesimulator.com format with txt2yaml.py.
 # Accepting states: done. All other stops reject.
 input: '01001'

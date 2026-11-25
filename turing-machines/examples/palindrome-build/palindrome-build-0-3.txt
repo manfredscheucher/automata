@@ -15,7 +15,7 @@
 // (markers o,i,j,k), and removed rules that never run
 // (qinit on markers, removing_the_markers on digits).
 
-name: Duplicate strings on symbols 0,1,2,3
+name: Build palindrome, symbols 0,1,2,3
 init: qinit
 accept: qfin
 

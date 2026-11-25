@@ -20,7 +20,7 @@ python3 minituring.py <program> <input>
 For example:
 
 ```bash
-python3 minituring.py ../examples/palindrome/binary-palindrome-simplified.txt 11011
+python3 minituring.py ../examples/palindrome-check/palindrome-check-simplified.txt 11011
 ```
 
 It prints every step with the state and the tape (head in `[ ]`), and stops after 10000 steps if the machine doesn't halt.
@@ -37,8 +37,8 @@ python3 yaml2txt.py <program.yaml> > <program>.txt
 For example:
 
 ```bash
-python3 txt2yaml.py ../examples/palindrome/binary-palindrome-simplified.txt 11011
-python3 yaml2txt.py ../examples/palindrome/binary-palindrome-simplified.yaml
+python3 txt2yaml.py ../examples/palindrome-check/palindrome-check-simplified.txt 11011
+python3 yaml2txt.py ../examples/palindrome-check/palindrome-check-simplified.yaml
 ```
 
 turingmachine.io has no accepting states (a machine stops when no rule matches), so they are listed in a comment. It can only move left or right, so a rule that stays (`-`) moves right into a helper state that moves back left. `yaml2txt.py` reads the accepting states back from that comment; without it, all states without rules accept, except one called `reject`.
@@ -49,10 +49,10 @@ Run from this folder. The result column shows what is on the tape at the end.
 
 | What | Command | Result |
 | --- | --- | --- |
-| binary palindrome | `python3 minituring.py ../examples/palindrome/binary-palindrome-simplified.txt 11011` | accepted after 21 steps, tape empty (the machine erases the input) |
-| duplicate | `python3 minituring.py ../examples/duplicate/copy-binary-string-no-separator.txt 01001` | accepted after 102 steps, tape `0100101001` |
-| duplicate with separator | `python3 minituring.py ../examples/duplicate/copy-binary-string.txt 01001` | accepted after 84 steps, tape `01001#01001` |
-| append the mirror image (makes a palindrome) | `python3 minituring.py ../examples/mirror/duplicate-0-3.txt 0123` | accepted after 51 steps, tape `01233210` |
+| binary palindrome | `python3 minituring.py ../examples/palindrome-check/palindrome-check-simplified.txt 11011` | accepted after 21 steps, tape empty (the machine erases the input) |
+| duplicate | `python3 minituring.py ../examples/duplicate/duplicate.txt 01001` | accepted after 102 steps, tape `0100101001` |
+| duplicate with separator | `python3 minituring.py ../examples/duplicate/duplicate-separator.txt 01001` | accepted after 84 steps, tape `01001#01001` |
+| append the mirror image (makes a palindrome) | `python3 minituring.py ../examples/palindrome-build/palindrome-build-0-3.txt 0123` | accepted after 51 steps, tape `01233210` |
 | add 1 | `python3 minituring.py ../examples/turingmachine-io/binary-increment.txt 1011` | accepted after 8 steps, tape `1100` |
 | decimal to binary | `python3 minituring.py ../examples/decimal-to-binary/decimal-to-binary.txt 13` | accepted after 43 steps, tape `1101` |
 | add two binary numbers | `python3 minituring.py ../examples/turingmachine-io/binary-add.txt 1011+11001` | accepted after 92 steps, tape `100100_11001` (the sum, then the second number) |

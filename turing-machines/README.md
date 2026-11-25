@@ -3,8 +3,8 @@
 Turing machines with one tape, for [turingmachinesimulator.com](https://turingmachinesimulator.com/) (`.txt`) and [turingmachine.io](https://turingmachine.io/) (`.yaml`).
 
 - [simulator](simulator): minituring, a minimal Turing machine simulator in Python, and converters between the two formats
-- [examples/palindrome](examples/palindrome): a simplified version of the "Binary palindrome" example from turingmachinesimulator.com
-- [examples/mirror](examples/mirror): appending the mirror image, which makes a palindrome (the "Duplicate binary string" example from turingmachinesimulator.com, also for 0 to 3 and 0 to 9)
+- [examples/palindrome-check](examples/palindrome-check): checks whether a binary string is a palindrome, a simplified version of the "Binary palindrome" example from turingmachinesimulator.com
+- [examples/palindrome-build](examples/palindrome-build): builds a palindrome by appending the mirror image (the "Duplicate binary string" example from turingmachinesimulator.com, also for 0 to 3 and 0 to 9)
 - [examples/duplicate](examples/duplicate): a real copy of a binary string, with and without a separator
 - [examples/decimal-to-binary](examples/decimal-to-binary): decimal to binary, with the most significant bit on the left
 - [examples/increment](examples/increment): adding 1 to a binary number, and a counter that never stops
@@ -13,5 +13,5 @@ Turing machines with one tape, for [turingmachinesimulator.com](https://turingma
 Every example is there as `.txt` and `.yaml`. Paste the `.txt` into the editor on turingmachinesimulator.com or the `.yaml` on turingmachine.io, or run the `.txt` locally:
 
 ```bash
-python3 simulator/minituring.py examples/palindrome/binary-palindrome-simplified.txt 11011
+python3 simulator/minituring.py examples/palindrome-check/palindrome-check-simplified.txt 11011
 ```

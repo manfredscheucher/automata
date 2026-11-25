@@ -13,9 +13,9 @@
 
 // Modified 2026 by Manfred Scheucher: removed rules that never run for inputs
 // over 0,1 (qinit on o and i, removing_the_markers on 0 and 1), and the machine
-// stops without a last move (-), as in duplicate-0-3.txt.
+// stops without a last move (-), as in palindrome-build-0-3.txt.
 
-name: Duplicate binary string
+name: Build palindrome, symbols 0,1
 init: qinit
 accept: qfin
 

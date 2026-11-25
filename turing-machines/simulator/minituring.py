@@ -4,7 +4,7 @@ Reads a program in the format of turingmachinesimulator.com (one tape)
 and runs it on one input, printing every step.
 
 Usage:   python3 minituring.py <program> <input>
-Example: python3 minituring.py binary-palindrome-simplified.txt 11011
+Example: python3 minituring.py palindrome-check-simplified.txt 11011
 """
 import sys
 

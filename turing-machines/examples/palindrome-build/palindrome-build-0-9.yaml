@@ -15,7 +15,7 @@
 # (markers o,i,j,k for 0 to 3 and a,b,c,d,e,f for 4 to 9), and removed rules that never run
 # (qinit on markers, removing_the_markers on digits).
 
-# Duplicate strings on symbols 0 to 9
+# Build palindrome, symbols 0 to 9
 # Converted from the turingmachinesimulator.com format with txt2yaml.py.
 # Accepting states: qfin. All other stops reject.
 input: '0123456789'

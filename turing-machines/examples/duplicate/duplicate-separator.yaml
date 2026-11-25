@@ -6,7 +6,7 @@
 # right end and writes it there, and repeats until it reaches the #.
 # At the end it turns the markers back into 0 and 1.
 
-# Copy binary string
+# Duplicate binary string with separator (w#w)
 # Converted from the turingmachinesimulator.com format with txt2yaml.py.
 # Accepting states: done. All other stops reject.
 input: '01001'
