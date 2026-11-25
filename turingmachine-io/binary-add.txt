@@ -1,0 +1,159 @@
+// binary addition
+// Ported from the turingmachine.io example binaryAdd
+// by Andy Li, https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see LICENSE).
+// The blank ' ' is written as _ here.
+// Example input: 1011+11001
+//
+// Adds two binary numbers together.
+//
+// Format: Given input a+b where a and b are binary numbers,
+// leaves c b on the tape, where c = a+b.
+// Example: '11+1' => '100 1'.
+
+name: binary addition
+init: right
+accept: done
+
+// Start at the second number's rightmost digit.
+right,0
+right,0,>
+
+right,1
+right,1,>
+
+right,+
+right,+,>
+
+right,_
+read,_,<
+
+// Add each digit from right to left:
+// read the current digit of the second number,
+read,0
+have0,c,<
+
+read,1
+have1,c,<
+
+read,+
+rewrite,_,<
+
+// and add it to the next place of the first number,
+// marking the place (using O or I) as already added.
+have0,0
+have0,0,<
+
+have0,1
+have0,1,<
+
+have0,+
+add0,+,<
+
+have1,0
+have1,0,<
+
+have1,1
+have1,1,<
+
+have1,+
+add1,+,<
+
+add0,0
+back0,O,>
+
+add0,_
+back0,O,>
+
+add0,1
+back0,I,>
+
+add0,O
+add0,O,<
+
+add0,I
+add0,I,<
+
+add1,0
+back1,I,>
+
+add1,_
+back1,I,>
+
+add1,1
+carry,O,<
+
+add1,O
+add1,O,<
+
+add1,I
+add1,I,<
+
+carry,0
+back1,1,>
+
+carry,_
+back1,1,>
+
+carry,1
+carry,0,<
+
+// Then, restore the current digit, and repeat with the next digit.
+back0,0
+back0,0,>
+
+back0,1
+back0,1,>
+
+back0,O
+back0,O,>
+
+back0,I
+back0,I,>
+
+back0,+
+back0,+,>
+
+back0,c
+read,0,<
+
+back1,0
+back1,0,>
+
+back1,1
+back1,1,>
+
+back1,O
+back1,O,>
+
+back1,I
+back1,I,>
+
+back1,+
+back1,+,>
+
+back1,c
+read,1,<
+
+// Finish: rewrite place markers back to 0s and 1s.
+rewrite,O
+rewrite,0,<
+
+rewrite,I
+rewrite,1,<
+
+rewrite,0
+rewrite,0,<
+
+rewrite,1
+rewrite,1,<
+
+rewrite,_
+done,_,>
+
+// Exercise:
+//
+// • Generate the Fibonacci sequence in binary, listed from right to left:
+//   ...1101 1000 101 11 10 1 1 0
+//   Hint: prefix the current number with a +, copy the previous number
+//   and place it left of the +, run the adder, and repeat.
+//   Example: '1 0' => '+1 0' => '0+1 0' => '1 1 0' => '+1 1 0' => ...

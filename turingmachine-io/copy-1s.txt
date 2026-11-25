@@ -1,0 +1,54 @@
+// copy 1s
+// Ported from the turingmachine.io example copy1s
+// by Andy Li, https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see LICENSE).
+// The blank '0' is written as _ here.
+// Example input: 111
+//
+// Copies a string of consecutive 1s.
+
+name: copy 1s
+init: each
+accept: H
+
+// mark the current 1 by erasing it
+each,_
+H,_,>
+
+each,1
+sep,_,>
+
+// skip to the separator
+sep,_
+add,_,>
+
+sep,1
+sep,1,>
+
+// skip to the end of the copy and write a 1
+add,_
+sepL,1,<
+
+add,1
+add,1,>
+
+// return to the separator
+sepL,_
+next,_,<
+
+sepL,1
+sepL,1,<
+
+// return to the erased 1, restore it, and then advance to the next 1
+next,_
+each,1,>
+
+next,1
+next,1,<
+
+// Exercises:
+//
+// • Edit the machine to copy the string indefinitely,
+//   i.e. given the input '11', produce 11011011011...
+//   Hint: this can be done by modifying only one transition.
+//
+// • Make a machine to output the endless sequence 1011011101111011111...

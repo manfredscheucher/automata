@@ -14,6 +14,10 @@ The original works with 0 and 1. These versions allow more symbols:
 
 The number of rules grows with the square of the number of symbols: every "carry symbol x to the right" state needs a rule for every symbol and every marker.
 
+## A real copy
+
+The machines above append the mirror image, so `01001` becomes `0100110010`. `copy-binary-string.txt` makes a real copy with a separator: `01001` becomes `01001#01001` (8 states, 25 rules). It works from left to right: it marks the leftmost unmarked symbol, carries it to the right end, and stops at the `#`.
+
 ## Source
 
 The original example is by Gabriel Alvarez, from [turingmachinesimulator.com](https://turingmachinesimulator.com/). Generalized 2026 by Manfred Scheucher. `duplicate-0-9.txt` follows the same layout as `duplicate-0-3.txt`.

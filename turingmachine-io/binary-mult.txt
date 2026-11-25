@@ -1,0 +1,254 @@
+// binary multiplication
+// Ported from the turingmachine.io example binaryMult
+// by Andy Li, https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see LICENSE).
+// The blank ' ' is written as _ here.
+// Example input: 11*101 (3*5 = 15 (1111 in binary))
+//
+// Multiplies two binary numbers together.
+//
+// Examples: '11*11' => '1001', '111*110' => '101010'.
+
+name: binary multiplication
+init: start
+accept: done
+
+// Prefix the input with a '+', and go to the rightmost digit.
+start,0
+init,0,<
+
+start,1
+init,1,<
+
+init,_
+right,+,>
+
+right,0
+right,0,>
+
+right,1
+right,1,>
+
+right,*
+right,*,>
+
+right,_
+readB,_,<
+
+// Read and erase the last digit of the multiplier.
+// If it's 1, add the current multiplicand.
+// In any case, double the multiplicand afterwards.
+readB,0
+doubleL,_,<
+
+readB,1
+addA,_,<
+
+addA,0
+addA,0,<
+
+addA,1
+addA,1,<
+
+// enter adder
+addA,*
+read,*,<
+
+// Double the multiplicand by appending a 0.
+doubleL,0
+doubleL,0,<
+
+doubleL,1
+doubleL,1,<
+
+doubleL,*
+shift,0,>
+
+// return from adder
+double,0
+double,0,>
+
+double,1
+double,1,>
+
+double,+
+double,+,>
+
+double,*
+shift,0,>
+
+// Make room by shifting the multiplier right 1 cell.
+shift,0
+shift0,*,>
+
+shift,1
+shift1,*,>
+
+// base case: multiplier = 0
+shift,_
+tidy,_,<
+
+shift0,0
+shift0,0,>
+
+shift0,1
+shift1,0,>
+
+shift0,_
+right,0,>
+
+shift1,0
+shift0,1,>
+
+shift1,1
+shift1,1,>
+
+shift1,_
+right,1,>
+
+tidy,0
+tidy,_,<
+
+tidy,1
+tidy,_,<
+
+tidy,+
+done,_,<
+
+// This is the 'binary addition' machine almost verbatim.
+// It's adjusted to keep the '+'
+// and to lead to another state instead of halting.
+read,0
+have0,c,<
+
+read,1
+have1,c,<
+
+// keep the +
+read,+
+rewrite,+,<
+
+have0,0
+have0,0,<
+
+have0,1
+have0,1,<
+
+have0,+
+add0,+,<
+
+have1,0
+have1,0,<
+
+have1,1
+have1,1,<
+
+have1,+
+add1,+,<
+
+add0,0
+back0,O,>
+
+add0,_
+back0,O,>
+
+add0,1
+back0,I,>
+
+add0,O
+add0,O,<
+
+add0,I
+add0,I,<
+
+add1,0
+back1,I,>
+
+add1,_
+back1,I,>
+
+add1,1
+carry,O,<
+
+add1,O
+add1,O,<
+
+add1,I
+add1,I,<
+
+carry,0
+back1,1,>
+
+carry,_
+back1,1,>
+
+carry,1
+carry,0,<
+
+back0,0
+back0,0,>
+
+back0,1
+back0,1,>
+
+back0,O
+back0,O,>
+
+back0,I
+back0,I,>
+
+back0,+
+back0,+,>
+
+back0,c
+read,0,<
+
+back1,0
+back1,0,>
+
+back1,1
+back1,1,>
+
+back1,O
+back1,O,>
+
+back1,I
+back1,I,>
+
+back1,+
+back1,+,>
+
+back1,c
+read,1,<
+
+rewrite,O
+rewrite,0,<
+
+rewrite,I
+rewrite,1,<
+
+rewrite,0
+rewrite,0,<
+
+rewrite,1
+rewrite,1,<
+
+// when done, go to the 'double' state
+rewrite,_
+double,_,>
+
+// Remark:
+// We can view the machine as expressing a recursive function:
+//
+//   multiply(a, b) = mult(0, a, b)
+//
+//   mult(acc, a, 0     ) = acc
+//   mult(acc, a, 2k + 0) = mult(acc    , 2a, k)   where k ≠ 0
+//   mult(acc, a, 2k + 1) = mult(acc + a, 2a, k)
+//
+// where a, b, and k are natural numbers.
+//
+// Each reduction maintains the invariant
+//   mult(acc, a, b) = acc + a * b
+// Note that mult's third argument (b) is always decreasing,
+// so mult is guaranteed to halt.
+// Eventually b reaches 0 and the result is simply the accumulator.

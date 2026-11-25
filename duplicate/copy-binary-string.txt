@@ -1,0 +1,91 @@
+// Input: a binary string w
+// Output: w#w, a copy of w after a separator (01001 -> 01001#01001)
+// Simulator: https://turingmachinesimulator.com
+//
+// Marks the leftmost unmarked symbol (0 -> o, 1 -> i), carries it to the
+// right end and writes it there, and repeats until it reaches the #.
+// At the end it turns the markers back into 0 and 1.
+
+name: Copy binary string
+init: start
+accept: done
+
+// Write the separator # at the right end, then go back to the start.
+start,0
+start,0,>
+
+start,1
+start,1,>
+
+start,_
+back,#,<
+
+back,0
+back,0,<
+
+back,1
+back,1,<
+
+back,_
+pick,_,>
+
+// Mark the next symbol, or stop at the separator.
+pick,0
+carry0,o,>
+
+pick,1
+carry1,i,>
+
+pick,#
+restore,#,<
+
+// Carry the symbol to the right end and write it there.
+carry0,0
+carry0,0,>
+
+carry0,1
+carry0,1,>
+
+carry0,#
+carry0,#,>
+
+carry0,_
+return,0,<
+
+carry1,0
+carry1,0,>
+
+carry1,1
+carry1,1,>
+
+carry1,#
+carry1,#,>
+
+carry1,_
+return,1,<
+
+// Go back to the last marked symbol and continue right of it.
+return,0
+return,0,<
+
+return,1
+return,1,<
+
+return,#
+return,#,<
+
+return,o
+pick,o,>
+
+return,i
+pick,i,>
+
+// Turn the markers back into 0 and 1.
+restore,o
+restore,0,<
+
+restore,i
+restore,1,<
+
+restore,_
+done,_,>

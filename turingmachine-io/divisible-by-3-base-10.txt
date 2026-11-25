@@ -1,0 +1,153 @@
+// divisible by 3 (base 10)
+// Ported from the turingmachine.io example divisibleBy3Base10
+// by Andy Li, https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see LICENSE).
+// The blank ' ' is written as _ here.
+// Example input: 4728 (try 42, 57, 1337, 5328, 7521, 314159265)
+//
+// Checks if a base 10 number is divisible by 3.
+// This uses the same idea as the base 2 version.
+//
+// To make things more interesting, we derive the step relation:
+// Let x be the number left of the tape head,
+//     d the digit under the head, and
+//     x' the number up to and including the head.
+// Then
+//   x' = 10x + d .
+// Notice 10 ≡ 1 (mod 3). Therefore
+//   x' ≡ x + d (mod 3) .
+// Each step simply adds the new digit's remainder mod 3.
+
+name: divisible by 3 (base 10)
+init: q0
+accept: accept
+
+// 0 + 0 ≡ 0 (mod 3)
+q0,0
+q0,0,>
+
+// 0 + 0 ≡ 0 (mod 3)
+q0,3
+q0,3,>
+
+// 0 + 0 ≡ 0 (mod 3)
+q0,6
+q0,6,>
+
+// 0 + 0 ≡ 0 (mod 3)
+q0,9
+q0,9,>
+
+// 0 + 1 ≡ 1
+q0,1
+q1,1,>
+
+// 0 + 1 ≡ 1
+q0,4
+q1,4,>
+
+// 0 + 1 ≡ 1
+q0,7
+q1,7,>
+
+// 0 + 2 ≡ 2
+q0,2
+q2,2,>
+
+// 0 + 2 ≡ 2
+q0,5
+q2,5,>
+
+// 0 + 2 ≡ 2
+q0,8
+q2,8,>
+
+q0,_
+accept,_,>
+
+// 1 + 0 ≡ 1
+q1,0
+q1,0,>
+
+// 1 + 0 ≡ 1
+q1,3
+q1,3,>
+
+// 1 + 0 ≡ 1
+q1,6
+q1,6,>
+
+// 1 + 0 ≡ 1
+q1,9
+q1,9,>
+
+// 1 + 1 ≡ 2
+q1,1
+q2,1,>
+
+// 1 + 1 ≡ 2
+q1,4
+q2,4,>
+
+// 1 + 1 ≡ 2
+q1,7
+q2,7,>
+
+// 1 + 2 ≡ 0
+q1,2
+q0,2,>
+
+// 1 + 2 ≡ 0
+q1,5
+q0,5,>
+
+// 1 + 2 ≡ 0
+q1,8
+q0,8,>
+
+// 2 + 0 ≡ 2
+q2,0
+q2,0,>
+
+// 2 + 0 ≡ 2
+q2,3
+q2,3,>
+
+// 2 + 0 ≡ 2
+q2,6
+q2,6,>
+
+// 2 + 0 ≡ 2
+q2,9
+q2,9,>
+
+// 2 + 1 ≡ 0
+q2,1
+q0,1,>
+
+// 2 + 1 ≡ 0
+q2,4
+q0,4,>
+
+// 2 + 1 ≡ 0
+q2,7
+q0,7,>
+
+// 2 + 2 ≡ 1
+q2,2
+q1,2,>
+
+// 2 + 2 ≡ 1
+q2,5
+q1,5,>
+
+// 2 + 2 ≡ 1
+q2,8
+q1,8,>
+
+// Exercises:
+//
+// • Check for divisibility by 5.
+//   Hint: only 2 states (besides accept) are required.
+//
+// • Check for divisibility by 4.
+//   Hint: use 4 states (besides accept).

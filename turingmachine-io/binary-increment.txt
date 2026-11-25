@@ -1,0 +1,45 @@
+// binary increment
+// Ported from the turingmachine.io example binaryIncrement
+// by Andy Li, https://github.com/aepsilon/turing-machine-viz (BSD 3-Clause, see LICENSE).
+// The blank ' ' is written as _ here.
+// Example input: 1011
+//
+// Adds 1 to a binary number.
+
+name: binary increment
+init: right
+accept: done
+
+// scan to the rightmost digit
+right,1
+right,1,>
+
+right,0
+right,0,>
+
+right,_
+carry,_,<
+
+// then carry the 1
+carry,1
+carry,0,<
+
+carry,0
+done,1,<
+
+carry,_
+done,1,<
+
+// Exercises:
+//
+// • Modify the machine to always halt on the leftmost digit
+//   (regardless of the number's length).
+//   Hint: add a state between carry and done.
+//
+// • Make a machine that adds 2 instead of 1.
+//   Hint: 2 is '10' in binary, so the last digit is unaffected.
+//   Alternative hint: chain together two copies of the machine from
+//   the first exercise (renaming the states of the second copy).
+//
+// • Make a machine to subtract 1.
+//   To simplify things, assume the input is always greater than 0.
