@@ -1,0 +1,64 @@
+// Input: a binary number n
+// Output: accepts if n is a palindrome
+// Example: accepts 10101
+//
+// Palindrome Algorithm
+// for Turing Machine Simulator 
+// turingmachinesimulator.com
+//
+// Original: "Binary palindrome" example by Martin Ugarte (Copyleft 2017).
+// Modified 2026 by Manfred Scheucher: no second phase, just walk back
+// to the left end. Nearly half the states and rules (7 instead of 12 states,
+// 16 instead of 30 rules), but nearly double the number of steps.
+
+name: Binary palindrome (Simplified)
+init: q0
+accept: qAccept
+
+q0,0
+qRight0,_,>
+
+qRight0,0
+qRight0,0,>
+
+qRight0,1
+qRight0,1,>
+
+q0,1
+qRight1,_,>
+
+qRight1,0
+qRight1,0,>
+
+qRight1,1
+qRight1,1,>
+
+qRight0,_
+qSearch0L,_,<
+
+qSearch0L,0
+q1,_,<
+
+qRight1,_
+qSearch1L,_,<
+
+qSearch1L,1
+q1,_,<
+
+q1,0
+q1,0,<
+
+q1,1
+q1,1,<
+
+q1,_
+q0,_,>
+
+q0,_
+qAccept,_,-
+
+qSearch0L,_
+qAccept,_,-
+
+qSearch1L,_
+qAccept,_,-
