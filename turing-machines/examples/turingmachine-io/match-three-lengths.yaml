@@ -1,6 +1,7 @@
 # three equal lengths
-# Ported from the turingmachine.io example matchThreeLengths by Andy Li (BSD 3-Clause license):
+# Ported from the turingmachine.io example matchThreeLengths:
 # https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/matchThreeLengths.yaml
+# Copyright 2015-2021 Andy Li, BSD 3-Clause license, see LICENSE.
 # The blank ' ' is written as _ here.
 # Example input: aabbcc (try bac, aabc, aabcc, aabcbc)
 

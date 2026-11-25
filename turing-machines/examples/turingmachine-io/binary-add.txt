@@ -1,6 +1,7 @@
 // binary addition
-// Ported from the turingmachine.io example binaryAdd by Andy Li (BSD 3-Clause license):
+// Ported from the turingmachine.io example binaryAdd:
 // https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/binaryAdd.yaml
+// Copyright 2015-2021 Andy Li, BSD 3-Clause license, see LICENSE.
 // The blank ' ' is written as _ here.
 // Example input: 1011+11001
 //

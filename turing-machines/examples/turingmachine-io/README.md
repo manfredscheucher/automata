@@ -1,6 +1,6 @@
 # Examples from turingmachine.io
 
-The examples of [turingmachine.io](https://turingmachine.io/) by Andy Li ([turing-machine-viz](https://github.com/aepsilon/turing-machine-viz), BSD 3-Clause license, see [LICENSE](LICENSE)), converted to the format of [turingmachinesimulator.com](https://turingmachinesimulator.com/). The comments and exercises are kept.
+The examples of [turingmachine.io](https://turingmachine.io/), Copyright 2015-2021 Andy Li ([turing-machine-viz](https://github.com/aepsilon/turing-machine-viz), BSD 3-Clause license, see [LICENSE](LICENSE)), converted to the format of [turingmachinesimulator.com](https://turingmachinesimulator.com/). The comments and exercises are kept.
 
 The `.yaml` files are generated from the `.txt` files with [txt2yaml.py](../../simulator/txt2yaml.py), not the original files of turing-machine-viz.
 

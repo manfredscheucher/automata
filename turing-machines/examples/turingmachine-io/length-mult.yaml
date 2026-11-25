@@ -1,6 +1,7 @@
 # multiplied lengths
-# Ported from the turingmachine.io example lengthMult by Andy Li (BSD 3-Clause license):
+# Ported from the turingmachine.io example lengthMult:
 # https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/lengthMult.yaml
+# Copyright 2015-2021 Andy Li, BSD 3-Clause license, see LICENSE.
 # The blank ' ' is written as _ here.
 # Example input: aabbbcccccc (try abc, b, aabcbc, aabcc, aabbbbcccccccc)
 

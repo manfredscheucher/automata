@@ -1,6 +1,7 @@
 // powers of two
-// Ported from the turingmachine.io example powersOfTwo by Andy Li (BSD 3-Clause license):
+// Ported from the turingmachine.io example powersOfTwo:
 // https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/powersOfTwo.yaml
+// Copyright 2015-2021 Andy Li, BSD 3-Clause license, see LICENSE.
 // The blank ' ' is written as _ here.
 // Example input: 0000 (try '0', '000', '00000000')
 //

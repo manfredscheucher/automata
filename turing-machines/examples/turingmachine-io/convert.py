@@ -19,8 +19,9 @@ if __name__ == "__main__":
             continue
         with open(os.path.join(src, f)) as yaml_file:
             name, settings, states, table, header, notes, footer = yaml2txt.parse(yaml_file.read())
-        intro = [f"// Ported from the turingmachine.io example {f[:-5]} by Andy Li (BSD 3-Clause license):",
-                 f"// https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/{f}"]
+        intro = [f"// Ported from the turingmachine.io example {f[:-5]}:",
+                 f"// https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/{f}",
+                 "// Copyright 2015-2021 Andy Li, BSD 3-Clause license, see LICENSE."]
         # binaryIncrement -> binary-increment.txt, divisibleBy3Base10 -> divisible-by-3-base-10.txt
         out = re.sub(r"(?<=[a-z])(?=[A-Z0-9])|(?<=[0-9])(?=[A-Z])", "-", f[:-5]).lower() + ".txt"
         program = yaml2txt.write_program(name, settings, states, table, header, notes, footer, intro)

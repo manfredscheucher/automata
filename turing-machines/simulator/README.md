@@ -54,7 +54,7 @@ Run from this folder. The result column shows what is on the tape at the end.
 | copy with separator | `python3 minituring.py ../examples/duplicate/copy-binary-string.txt 01001` | accepted after 84 steps, tape `01001#01001` |
 | append the mirror image | `python3 minituring.py ../examples/duplicate/duplicate-0-3.txt 0123` | accepted after 51 steps, tape `01233210` |
 | add 1 | `python3 minituring.py ../examples/turingmachine-io/binary-increment.txt 1011` | accepted after 8 steps, tape `1100` |
-| decimal to binary | `python3 minituring.py ../examples/decimal-to-binary/decimal-to-binary-msb.txt 13` | accepted after 68 steps, tape `1101` |
+| decimal to binary | `python3 minituring.py ../examples/decimal-to-binary/decimal-to-binary.txt 13` | accepted after 43 steps, tape `1101` |
 | add two binary numbers | `python3 minituring.py ../examples/turingmachine-io/binary-add.txt 1011+11001` | accepted after 92 steps, tape `100100_11001` (the sum, then the second number) |
 | multiply two binary numbers | `python3 minituring.py ../examples/turingmachine-io/binary-mult.txt '11*101'` | accepted after 116 steps, tape `1111` |
 | divisible by 3 | `python3 minituring.py ../examples/turingmachine-io/divisible-by-3.txt 1001` | accepted after 5 steps, tape `1001` |

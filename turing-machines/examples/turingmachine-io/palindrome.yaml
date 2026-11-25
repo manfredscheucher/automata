@@ -1,6 +1,7 @@
 # palindrome
-# Ported from the turingmachine.io example palindrome by Andy Li (BSD 3-Clause license):
+# Ported from the turingmachine.io example palindrome:
 # https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/palindrome.yaml
+# Copyright 2015-2021 Andy Li, BSD 3-Clause license, see LICENSE.
 # The blank ' ' is written as _ here.
 # Example input: abba (try a, ab, bb, babab)
 
