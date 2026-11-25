@@ -16,7 +16,7 @@ Run one, for example:
 python3 ../simulator/minituring.py binary-add.txt 1011+11001
 ```
 
-`convert.py` did the conversion:
+`convert.py` did the conversion, with [yaml2txt.py](../simulator/yaml2txt.py):
 
 ```bash
 python3 convert.py <turing-machine-viz>/src/examples .

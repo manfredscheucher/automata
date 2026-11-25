@@ -25,16 +25,23 @@ python3 minituring.py ../palindrome/binary-palindrome-simplified.txt 11011
 
 It prints every step with the state and the tape (head in `[ ]`), and stops after 100000 steps if the machine doesn't halt.
 
-## Convert to turingmachine.io
+## Convert between the two formats
 
-`txt2yaml.py` converts a program to the YAML format of [turingmachine.io](https://turingmachine.io/), which also draws the states as a diagram:
+`txt2yaml.py` converts a program to the YAML format of [turingmachine.io](https://turingmachine.io/), which also draws the states as a diagram. `yaml2txt.py` converts back:
 
 ```bash
-python3 txt2yaml.py <program> [<input>] > <program>.yaml
-python3 txt2yaml.py ../palindrome/binary-palindrome-simplified.txt 11011 > binary-palindrome-simplified.yaml
+python3 txt2yaml.py <program.txt> [<input>] > <program>.yaml
+python3 yaml2txt.py <program.yaml> > <program>.txt
 ```
 
-turingmachine.io has no accepting states (a machine stops when no rule matches), so they are listed in a comment. It can only move left or right, so a rule that stays (`-`) moves right into a helper state that moves back left.
+For example:
+
+```bash
+python3 txt2yaml.py ../palindrome/binary-palindrome-simplified.txt 11011 > binary-palindrome-simplified.yaml
+python3 yaml2txt.py binary-palindrome-simplified.yaml > binary-palindrome-simplified.txt
+```
+
+turingmachine.io has no accepting states (a machine stops when no rule matches), so they are listed in a comment. It can only move left or right, so a rule that stays (`-`) moves right into a helper state that moves back left. `yaml2txt.py` reads the accepting states back from that comment; without it, all states without rules accept, except one called `reject`.
 
 ## Examples
 
