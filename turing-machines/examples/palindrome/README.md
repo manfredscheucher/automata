@@ -13,8 +13,6 @@ The trade-off: nearly half the states and rules, but nearly double the number of
 
 ## Run
 
-Open [turingmachinesimulator.com](https://turingmachinesimulator.com/), paste `binary-palindrome-simplified.txt` into the editor, compile and run it with an input like `10101`. Or run it locally:
-
 ```bash
 python3 ../../simulator/minituring.py binary-palindrome-simplified.txt 10101
 ```

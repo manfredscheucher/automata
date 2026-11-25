@@ -1,8 +1,8 @@
-# minituring: a minimal Turing machine simulator
+# Simulator and converters
 
-A Turing machine simulator in Python, kept short and easy to follow. Like [minisim](https://github.com/manfredscheucher/ktoy#minisim) for the Toy CPU.
+`minituring.py` is a Turing machine simulator in Python, kept short and easy to follow, like [minisim](https://github.com/manfredscheucher/ktoy#minisim) for the Toy CPU. `txt2yaml.py` and `yaml2txt.py` convert between the two formats.
 
-It reads programs in the format of [turingmachinesimulator.com](https://turingmachinesimulator.com/) (one tape): `//` comments, `init:` and `accept:`, and each rule on two lines:
+minituring reads programs in the format of [turingmachinesimulator.com](https://turingmachinesimulator.com/) (one tape): `//` comments, `init:` and `accept:`, and each rule on two lines:
 
 ```
 q0,1

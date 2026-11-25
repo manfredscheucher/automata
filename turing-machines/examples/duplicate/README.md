@@ -1,8 +1,10 @@
 # Turing machine: duplicate a string
 
-Generalized versions of the "Duplicate binary string" example by Gabriel Alvarez on [turingmachinesimulator.com](https://turingmachinesimulator.com/). The machine appends the mirror image of the input, so `0123` becomes `01233210`.
+Two kinds of machines: the `duplicate-0-*` files append the mirror image of the input (`0123` becomes `01233210`), the `copy-binary-string-*` files make a real copy (`01001` becomes `0100101001`).
 
-It marks the rightmost unmarked symbol (0 becomes `o`, 1 becomes `i`, ...), carries it to the right end and writes the marker there, and repeats until all symbols are marked. At the end it turns the markers back into symbols.
+## Mirror image
+
+The `duplicate-0-*` files are based on the "Duplicate binary string" example by Gabriel Alvarez on [turingmachinesimulator.com](https://turingmachinesimulator.com/). It marks the rightmost unmarked symbol (0 becomes `o`, 1 becomes `i`, ...), carries it to the right end and writes the marker there, and repeats until all symbols are marked. At the end it turns the markers back into symbols.
 
 The original works with 0 and 1. `duplicate-0-1.txt` is the original without 4 rules that never run. The other versions allow more symbols:
 
@@ -22,8 +24,6 @@ The number of rules grows with the square of the number of symbols: every "carry
 `copy-binary-string.txt` makes a real copy with a separator: `01001` becomes `01001#01001` (8 states, 25 rules). It works from left to right: it marks the leftmost unmarked symbol, carries it to the right end, and stops at the `#`.
 
 ## Run
-
-Open [turingmachinesimulator.com](https://turingmachinesimulator.com/), paste one of the files into the editor, compile and run it with an input like `0123`. Or run it locally:
 
 ```bash
 python3 ../../simulator/minituring.py duplicate-0-3.txt 0123
