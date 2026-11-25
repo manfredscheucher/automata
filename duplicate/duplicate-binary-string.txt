@@ -1,0 +1,86 @@
+// Input: a binary string w
+// Output: ww, the string followed by a copy of itself (01001 -> 0100101001)
+// Simulator: https://turingmachinesimulator.com
+//
+// Copies from left to right. Every symbol that is done becomes o (for 0)
+// or i (for 1): the original once it is copied, and the new copy at the end.
+// So the tape shows what is already copied. At the end all o and i turn
+// back into 0 and 1.
+
+name: Duplicate binary string
+init: pick
+accept: done
+
+// Skip what is already copied and take the next 0 or 1.
+// If there is none left, everything is copied.
+pick,o
+pick,o,>
+
+pick,i
+pick,i,>
+
+pick,0
+carry0,o,>
+
+pick,1
+carry1,i,>
+
+pick,_
+restore,_,<
+
+// Carry the symbol to the right end and write it there as o or i.
+carry0,0
+carry0,0,>
+
+carry0,1
+carry0,1,>
+
+carry0,o
+carry0,o,>
+
+carry0,i
+carry0,i,>
+
+carry0,_
+back,o,<
+
+carry1,0
+carry1,0,>
+
+carry1,1
+carry1,1,>
+
+carry1,o
+carry1,o,>
+
+carry1,i
+carry1,i,>
+
+carry1,_
+back,i,<
+
+// Go back to the left end.
+back,0
+back,0,<
+
+back,1
+back,1,<
+
+back,o
+back,o,<
+
+back,i
+back,i,<
+
+back,_
+pick,_,>
+
+// Turn o and i back into 0 and 1.
+restore,o
+restore,0,<
+
+restore,i
+restore,1,<
+
+restore,_
+done,_,>

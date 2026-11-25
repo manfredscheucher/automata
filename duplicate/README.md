@@ -16,6 +16,8 @@ The number of rules grows with the square of the number of symbols: every "carry
 
 ## A real copy
 
+`duplicate-binary-string.txt` copies the string right behind itself: `01001` becomes `0100101001` (6 states, 23 rules). It works from left to right. Every symbol that is done becomes `o` (for 0) or `i` (for 1): the original once it is copied, and the new copy at the end. So the tape shows what is already copied. At the end all `o` and `i` turn back into 0 and 1.
+
 `copy-binary-string.txt` makes a real copy with a separator: `01001` becomes `01001#01001` (8 states, 25 rules). It works from left to right: it marks the leftmost unmarked symbol, carries it to the right end, and stops at the `#`.
 
 ## Source

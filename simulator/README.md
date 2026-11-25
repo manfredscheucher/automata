@@ -32,6 +32,7 @@ Run from this folder. The result column shows what is on the tape at the end.
 | What | Command | Result |
 | --- | --- | --- |
 | binary palindrome | `python3 minituring.py ../palindrome/binary-palindrome-simplified.txt 11011` | accepted after 21 steps, tape empty (the machine erases the input) |
+| copy | `python3 minituring.py ../duplicate/duplicate-binary-string.txt 01001` | accepted after 102 steps, tape `0100101001` |
 | copy with separator | `python3 minituring.py ../duplicate/copy-binary-string.txt 01001` | accepted after 84 steps, tape `01001#01001` |
 | append the mirror image | `python3 minituring.py ../duplicate/duplicate-0-3.txt 0123` | accepted after 51 steps, tape `01233210` |
 | add 1 | `python3 minituring.py ../turingmachine-io/binary-increment.txt 1011` | accepted after 8 steps, tape `1100` |
