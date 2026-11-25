@@ -4,6 +4,8 @@
 
 It halves the number again and again from left to right, like long division. The states `halve0` and `halve1` remember the remainder so far. At the right end the remainder is the next bit, and it goes in front of the bits behind the `#`. Tape: `<number> # <bits>`.
 
+## Run
+
 ```bash
 python3 ../../simulator/minituring.py decimal-to-binary.txt 13
 ```

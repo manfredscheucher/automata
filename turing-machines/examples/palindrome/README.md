@@ -11,10 +11,6 @@ The original works in two phases. It erases the leftmost symbol, remembers it, w
 
 The trade-off: nearly half the states and rules, but nearly double the number of steps, because the walk back to the left does no work.
 
-## Source
-
-The original example is by Martin Ugarte (Copyleft 2017), from [turingmachinesimulator.com](https://turingmachinesimulator.com/). Modified 2026 by Manfred Scheucher.
-
 ## Run
 
 Open [turingmachinesimulator.com](https://turingmachinesimulator.com/), paste `binary-palindrome-simplified.txt` into the editor, compile and run it with an input like `10101`. Or run it locally:
@@ -22,3 +18,7 @@ Open [turingmachinesimulator.com](https://turingmachinesimulator.com/), paste `b
 ```bash
 python3 ../../simulator/minituring.py binary-palindrome-simplified.txt 10101
 ```
+
+## Source
+
+The original example is by Martin Ugarte (Copyleft 2017), from [turingmachinesimulator.com](https://turingmachinesimulator.com/). Modified 2026 by Manfred Scheucher.

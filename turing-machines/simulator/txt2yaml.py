@@ -54,8 +54,10 @@ def read_program(text):
             # A rule: this line and the next line that is not empty or a comment.
             condition = line.split("//")[0]
             i += 1
-            while not lines[i] or lines[i].startswith("//"):
+            while i < len(lines) and (not lines[i] or lines[i].startswith("//")):
                 i += 1
+            if i == len(lines):
+                sys.exit(f"the rule {condition} has no second line")
             action = lines[i].split("//")[0]
             state, read = [x.strip() for x in condition.split(",")]
             next_state, write, move = [x.strip() for x in action.split(",")]

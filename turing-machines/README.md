@@ -1,6 +1,6 @@
 # Turing machines
 
-Turing machines with one tape, in the format of [turingmachinesimulator.com](https://turingmachinesimulator.com/).
+Turing machines with one tape, for [turingmachinesimulator.com](https://turingmachinesimulator.com/) (`.txt`) and [turingmachine.io](https://turingmachine.io/) (`.yaml`).
 
 - [simulator](simulator): minituring, a minimal Turing machine simulator in Python, and converters between the two formats
 - [examples/palindrome](examples/palindrome): a simplified version of the "Binary palindrome" example

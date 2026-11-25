@@ -21,10 +21,6 @@ The number of rules grows with the square of the number of symbols: every "carry
 
 `copy-binary-string.txt` makes a real copy with a separator: `01001` becomes `01001#01001` (8 states, 25 rules). It works from left to right: it marks the leftmost unmarked symbol, carries it to the right end, and stops at the `#`.
 
-## Source
-
-The original example is by Gabriel Alvarez, from [turingmachinesimulator.com](https://turingmachinesimulator.com/). Generalized 2026 by Manfred Scheucher. `duplicate-0-9.txt` follows the same layout as `duplicate-0-3.txt`.
-
 ## Run
 
 Open [turingmachinesimulator.com](https://turingmachinesimulator.com/), paste one of the files into the editor, compile and run it with an input like `0123`. Or run it locally:
@@ -33,3 +29,7 @@ Open [turingmachinesimulator.com](https://turingmachinesimulator.com/), paste on
 python3 ../../simulator/minituring.py duplicate-0-3.txt 0123
 python3 ../../simulator/minituring.py copy-binary-string-no-separator.txt 01001
 ```
+
+## Source
+
+The original example is by Gabriel Alvarez, from [turingmachinesimulator.com](https://turingmachinesimulator.com/). Modified 2026 by Manfred Scheucher: generalized to more symbols, and rules that never run removed. `duplicate-0-9.txt` follows the same layout as `duplicate-0-3.txt`.

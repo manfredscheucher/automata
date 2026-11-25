@@ -224,5 +224,9 @@ if __name__ == "__main__":
         sys.exit("usage: python3 yaml2txt.py <program.yaml>")
     path = sys.argv[1]
     name, *rest = parse(open(path).read())
+    header = rest[3]
+    for before, line in zip(header, header[1:]):
+        if not name and line.strip().startswith("Converted from the turingmachinesimulator.com format"):
+            name = before.strip()           # the name txt2yaml.py wrote
     name = name or os.path.splitext(os.path.basename(path))[0]
     print(write_program(name, *rest, ["// Converted from the turingmachine.io format with yaml2txt.py."]), end="")
