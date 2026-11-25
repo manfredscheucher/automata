@@ -135,12 +135,14 @@ def convert(path):
                 for item in split_items(value.strip()[1:-1], raw=True):
                     k, v = split_rule(item)
                     for symbol in parse_symbols(k):
-                        table[state].append((symbol, parse_action(v, synonyms), None))
+                        table[state].append((symbol, parse_action(v, synonyms), []))
         elif section == "table" and indent == 4:
-            notes[state] += pending
+            # Comments above a rule and behind it belong to that rule; with several
+            # symbols they are written only once, above the first one.
+            rule_notes = pending + ([" " + comment] if comment else [])
             pending = []
-            for symbol in parse_symbols(key):
-                table[state].append((symbol, parse_action(value, synonyms), comment))
+            for i, symbol in enumerate(parse_symbols(key)):
+                table[state].append((symbol, parse_action(value, synonyms), rule_notes if i == 0 else []))
     footer = pending
     return name, settings, states, table, header, notes, footer
 
@@ -181,9 +183,8 @@ def write_program(name, settings, states, table, header, notes, footer, source):
         block = comment_block(notes[state])
         if block:
             out += block
-        for symbol, (write, move, next_state), comment in table[state]:
-            if comment:
-                out.append(f"// {comment}")
+        for symbol, (write, move, next_state), rule_notes in table[state]:
+            out += comment_block(rule_notes)
             out.append(f"{state},{sym(symbol)}")
             out.append(f"{next_state or state},{sym(write if write is not None else symbol)},{move}")
             out.append("")

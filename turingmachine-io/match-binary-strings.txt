@@ -14,13 +14,13 @@ init: start
 accept: accept
 
 // Inductive case: start with the same symbol.
-// Base case: empty string.
 start,0
 have0,_,>
 
 start,1
 have1,_,>
 
+// Base case: empty string.
 start,#
 check,#,>
 

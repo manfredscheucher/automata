@@ -25,17 +25,17 @@ python3 minituring.py ../palindrome/binary-palindrome-simplified.txt 11011
 
 It prints every step with the state and the tape (head in `[ ]`), and stops after 100000 steps if the machine doesn't halt.
 
-## Several tapes
+## Examples
 
-`multituring.py` is the same for machines with several tapes, in the multi-tape format of turingmachinesimulator.com. A rule for 2 tapes reads one symbol per tape and writes and moves on each tape:
+Run from this folder. The result column shows what is on the tape at the end.
 
-```
-copy,1,_
-copy,1,1,>,>
-```
-
-The input goes on tape 1, the other tapes start blank. The tapes are one dictionary from (tape, position) to symbol.
-
-```bash
-python3 multituring.py ../multitape/palindrome-2-tapes.txt 11011
-```
+| What | Command | Result |
+| --- | --- | --- |
+| binary palindrome | `python3 minituring.py ../palindrome/binary-palindrome-simplified.txt 11011` | accepted after 21 steps, tape empty (the machine erases the input) |
+| copy with separator | `python3 minituring.py ../duplicate/copy-binary-string.txt 01001` | accepted after 84 steps, tape `01001#01001` |
+| append the mirror image | `python3 minituring.py ../duplicate/duplicate-0-3.txt 0123` | accepted after 51 steps, tape `01233210` |
+| add 1 | `python3 minituring.py ../turingmachine-io/binary-increment.txt 1011` | accepted after 8 steps, tape `1100` |
+| add two binary numbers | `python3 minituring.py ../turingmachine-io/binary-add.txt 1011+11001` | accepted after 92 steps, tape `100100_11001` (the sum, then the second number) |
+| multiply two binary numbers | `python3 minituring.py ../turingmachine-io/binary-mult.txt '11*101'` | accepted after 116 steps, tape `1111` |
+| divisible by 3 | `python3 minituring.py ../turingmachine-io/divisible-by-3.txt 1001` | accepted after 5 steps, tape `1001` |
+| busy beaver with 3 states | `python3 minituring.py ../turingmachine-io/busy-beaver-3.txt ""` | accepted after 13 steps, tape `111111` |

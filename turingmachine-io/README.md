@@ -4,7 +4,7 @@ The examples of [turingmachine.io](https://turingmachine.io/) by Andy Li ([turin
 
 Differences to the originals:
 
-- The blank is always `_`. In `busy-beaver-3`, `busy-beaver-4` and `copy-1s` the blank was `0`, so there `0` is written as `_`.
+- The blank is always `_`. In `busy-beaver-3`, `busy-beaver-4` and `copy-1s` the blank was `0`, so there `0` is written as `_`. The comments still use the original blank.
 - turingmachine.io has no accepting states. Here the states without rules are accepting, except `reject`.
 - `repeat-01` never halts, so it has no accepting state (`accept: none`).
 

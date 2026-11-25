@@ -16,7 +16,7 @@ The number of rules grows with the square of the number of symbols: every "carry
 
 ## A real copy
 
-The machines above append the mirror image, so `01001` becomes `0100110010`. `copy-binary-string.txt` makes a real copy with a separator: `01001` becomes `01001#01001` (8 states, 25 rules). It works from left to right: it marks the leftmost unmarked symbol, carries it to the right end, and stops at the `#`.
+`copy-binary-string.txt` makes a real copy with a separator: `01001` becomes `01001#01001` (8 states, 25 rules). It works from left to right: it marks the leftmost unmarked symbol, carries it to the right end, and stops at the `#`.
 
 ## Source
 
