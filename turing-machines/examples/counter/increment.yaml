@@ -8,7 +8,7 @@
 
 # Based on the turingmachine.io example binaryIncrement:
 # https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/binaryIncrement.yaml
-# Copyright 2015-2021 Andy Li, BSD 3-Clause license, see ../turingmachine-io/LICENSE.
+# Copyright 2015-2021 Andy Li, BSD 3-Clause license, see ../LICENSE-turingmachine-io.
 # Going back to the first digit is the first exercise there.
 
 # Binary increment

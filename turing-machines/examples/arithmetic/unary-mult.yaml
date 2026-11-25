@@ -1,0 +1,56 @@
+# unary multiplication
+# Ported from the turingmachine.io example unaryMult:
+# https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/unaryMult.yaml
+# Copyright 2015-2021 Andy Li, BSD 3-Clause license, see ../LICENSE-turingmachine-io.
+# The blank ' ' is written as _ here.
+# Example input: ||*||| (try '*', '|*|||', '||||*||')
+
+# Multiplies together two unary numbers separated by a '*'.
+# (Unary is like tallying. Here '||*|||' means 2 times 3.)
+
+# The idea:
+# multiply(0, b) = 0
+# multiply(a, b) = b + multiply(a-1, b)   when a > 0
+
+# unary multiplication
+# Converted from the turingmachinesimulator.com format with txt2yaml.py.
+# Accepting states: done. All other stops reject.
+input: '||*|||'
+blank: ' '
+start state: eachA
+table:
+  eachA:
+    # For each 1 in a, add a copy of b.
+    # Inductive case: a > 0.
+    '|': {write: ' ', R: toB}
+    # Base case:      a = 0.
+    '*': {R: skip}
+  toB:
+    '|': R
+    # enter copier
+    '*': {R: eachB}
+  skip:
+    '|': R
+    ' ': {R: done}
+  eachB:
+    # This is the 'copy 1s' machine, with ' ' as 0 and '|' as 1.
+    ' ': {L: nextA}
+    '|': {write: ' ', R: sep}
+  nextA:
+    # return from copier
+    ' ': {write: '|', R: eachA}
+    '|': L
+    '*': L
+  done:
+  sep:
+    ' ': {R: add}
+    '|': R
+  add:
+    ' ': {write: '|', L: sepL}
+    '|': R
+  sepL:
+    ' ': {L: nextB}
+    '|': L
+  nextB:
+    ' ': {write: '|', R: eachB}
+    '|': L

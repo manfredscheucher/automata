@@ -1,0 +1,106 @@
+// multiplied lengths
+// Ported from the turingmachine.io example lengthMult:
+// https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/lengthMult.yaml
+// Copyright 2015-2021 Andy Li, BSD 3-Clause license, see ../LICENSE-turingmachine-io.
+// The blank ' ' is written as _ here.
+// Example input: aabbbcccccc (try abc, b, aabcbc, aabcc, aabbbbcccccccc)
+//
+// Decides the language { a^(i)b^(j)c^(k) | i*j = k and i,j,k ≥ 1 }.
+// (a's followed by b's then c's,
+// where the number of a's multiplied by the number of b's
+// equals the number of c's.)
+
+name: multiplied lengths
+init: start
+accept: accept
+
+// Check for the form a^(i)b^(j)c^(k) where i,j,k ≥ 1.
+start,a
+a+,a,>
+
+a+,a
+a+,a,>
+
+a+,b
+b+,b,>
+
+b+,b
+b+,b,>
+
+b+,c
+c+,c,>
+
+c+,c
+c+,c,>
+
+c+,_
+left,_,<
+
+left,a
+left,a,<
+
+left,b
+left,b,<
+
+left,c
+left,c,<
+
+left,_
+eachA,_,>
+
+// Then check that i*j = k.
+//   The approach is two nested loops:
+//   For each 'a':
+//     For each 'b':
+//       Mark one 'c'
+//   At the end, check that all c's are marked.
+eachA,a
+eachB,_,>
+
+eachA,b
+scan,b,>
+
+eachB,a
+eachB,a,>
+
+eachB,b
+markC,B,>
+
+eachB,C
+nextA,C,<
+
+markC,b
+markC,b,>
+
+markC,C
+markC,C,>
+
+markC,c
+nextB,C,<
+
+nextB,b
+nextB,b,<
+
+nextB,C
+nextB,C,<
+
+nextB,B
+eachB,B,>
+
+nextA,a
+nextA,a,<
+
+nextA,B
+nextA,b,<
+
+nextA,_
+eachA,_,>
+
+scan,b
+scan,b,>
+
+scan,C
+scan,C,>
+
+scan,_
+accept,_,>

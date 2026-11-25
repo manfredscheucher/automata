@@ -1,0 +1,63 @@
+// 4-state busy beaver
+// Ported from the turingmachine.io example busyBeaver4:
+// https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/busyBeaver4.yaml
+// Copyright 2015-2021 Andy Li, BSD 3-Clause license, see ../LICENSE-turingmachine-io.
+// The blank '0' is written as _ here.
+// Example input: none, start with an empty tape.
+//
+// A 4-state 2-symbol busy beaver
+// that halts after 107 steps, leaving 13 1's on the tape.
+// It takes the most steps *and* prints the most 1's.
+
+name: 4-state busy beaver
+init: A
+accept: H
+
+A,_
+B,1,>
+
+A,1
+B,1,<
+
+B,_
+A,1,<
+
+B,1
+C,_,<
+
+C,_
+H,1,>
+
+C,1
+D,1,<
+
+D,_
+D,1,>
+
+D,1
+A,_,>
+
+// Finding a busy beaver requires considering every n-state k-symbol
+// machine and proving either that it halts with no more non-blank symbols
+// or that it never halts at all.
+//
+// Even with strategies to reduce the search space—
+// including normalization, accelerated simulation, and automated proofs—
+// there are still machines that show surprising complexity
+// and require individual analysis.
+//
+// This 4-state busy beaver was proven by Allen Brady in 1983.
+// Busy beavers for 5 states and above are as yet unknown.
+// At the time of writing, the current 5-state 2-symbol contender
+// takes 47,176,870 steps to halt, and the 6-state contender
+// takes over 7.4 * 10^36534 steps
+// (http://www.logique.jussieu.fr/~michel/bbc.html).
+// "Given that 5-state 2-symbol halting Turing machines can compute
+// Collatz-like congruential functions, it may be very hard to find
+// [the next busy beaver]" (https://oeis.org/A060843).
+//
+//
+// An entertaining read on busy beavers and their profoundness:
+//
+// • "Who Can Name the Bigger Number?"
+//   http://www.scottaaronson.com/writings/bignumbers.html

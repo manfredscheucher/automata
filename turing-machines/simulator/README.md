@@ -55,8 +55,8 @@ Run from this folder. The result column shows what is on the tape at the end.
 | duplicate with separator | `python3 minituring.py ../examples/duplicate/duplicate-separator.txt 01001` | accepted after 84 steps, tape `01001#01001` |
 | add 1 | `python3 minituring.py ../examples/counter/increment.txt 1011` | accepted after 10 steps, tape `1100` |
 | decimal to binary | `python3 minituring.py ../examples/decimal-to-binary/decimal-to-binary.txt 13` | accepted after 43 steps, tape `1101` |
-| add two binary numbers | `python3 minituring.py ../examples/turingmachine-io/binary-add.txt 1011+11001` | accepted after 92 steps, tape `100100_11001` (the sum, then the second number) |
-| multiply two binary numbers | `python3 minituring.py ../examples/turingmachine-io/binary-mult.txt '11*101'` | accepted after 116 steps, tape `1111` |
-| divisible by 3 | `python3 minituring.py ../examples/turingmachine-io/divisible-by-3.txt 1001` | accepted after 5 steps, tape `1001` |
-| busy beaver with 3 states | `python3 minituring.py ../examples/turingmachine-io/busy-beaver-3.txt ""` | accepted after 13 steps, tape `111111` |
-| the first machine in Turing's 1936 paper: 0 1 0 1 ... forever | `python3 minituring.py ../examples/turingmachine-io/repeat-01.txt ""` | never stops, tape `0_1_0_1_...`; minituring stops it after 10000 steps |
+| add two binary numbers | `python3 minituring.py ../examples/arithmetic/binary-add.txt 1011+11001` | accepted after 92 steps, tape `100100_11001` (the sum, then the second number) |
+| multiply two binary numbers | `python3 minituring.py ../examples/arithmetic/binary-mult.txt '11*101'` | accepted after 116 steps, tape `1111` |
+| divisible by 3 | `python3 minituring.py ../examples/divisible-by-3/divisible-by-3.txt 1001` | accepted after 5 steps, tape `1001` |
+| busy beaver with 3 states | `python3 minituring.py ../examples/busy-beaver/busy-beaver-3.txt ""` | accepted after 13 steps, tape `111111` |
+| the first machine in Turing's 1936 paper: 0 1 0 1 ... forever | `python3 minituring.py ../examples/turing-1936/repeat-01.txt ""` | never stops, tape `0_1_0_1_...`; minituring stops it after 10000 steps |

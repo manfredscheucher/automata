@@ -1,0 +1,69 @@
+// divisible by 3
+// Ported from the turingmachine.io example divisibleBy3:
+// https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/divisibleBy3.yaml
+// Copyright 2015-2021 Andy Li, BSD 3-Clause license, see ../LICENSE-turingmachine-io.
+// The blank ' ' is written as _ here.
+// Example input: 1001 (try '1111' (15), '10100' (20), '111001' (57))
+//
+// Checks if a binary number is divisible by 3.
+// How it works:
+//
+// Consider reading a binary number, say 10011 (19),
+// from left to right one digit at a time.
+// Each time a digit is read, the new value equals the new digit
+// plus the old value shifted left one place (multiplied by 2).
+//
+// Digits  Value
+// -------------
+//         0
+// 1       1
+// 10      2
+// 100     4
+// 1001    9
+// 10011   19
+//
+// Now instead of tracking the entire number, just track the remainder.
+// It works the same way.
+
+name: divisible by 3
+init: q0
+accept: accept
+
+// 2*0 + 0 = 0
+q0,0
+q0,0,>
+
+// 2*0 + 1 = 1
+q0,1
+q1,1,>
+
+q0,_
+accept,_,>
+
+// 2*1 + 0 = 2
+q1,0
+q2,0,>
+
+// 2*1 + 1 = 3
+q1,1
+q0,1,>
+
+// 2*2 + 0 = 4
+q2,0
+q1,0,>
+
+// 2*2 + 1 = 5
+q2,1
+q2,1,>
+
+// Exercises:
+//
+// • Modify the machine to check if n-1 is divisible by 3,
+//   where n is the input. That is, accept the binary of 1, 4, 7, 10, ...
+//   Hint: this can be done without modifying the tape (no 'write').
+//
+// • Round the number up to the nearest multiple of 3.
+//   Hint: do one pass right to find the remainder, then another pass left
+//   to add. See the 'binary increment' example for how to add.
+//
+// • Round the number down to the nearest multiple of 3.

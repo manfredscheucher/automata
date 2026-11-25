@@ -1,0 +1,57 @@
+# powers of two
+# Ported from the turingmachine.io example powersOfTwo:
+# https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/powersOfTwo.yaml
+# Copyright 2015-2021 Andy Li, BSD 3-Clause license, see ../LICENSE-turingmachine-io.
+# The blank ' ' is written as _ here.
+# Example input: 0000 (try '0', '000', '00000000')
+
+# Matches strings of 0s whose length is a power of two.
+
+# This example comes from the textbook
+# "Introduction to the Theory of Computation" (3rd edition, 2012)
+# by Michael Sipser
+# The states have been renamed (from q1, q2, etc.)
+# to make it easier to understand.
+# The idea: divide the length by 2 repeatedly until it reaches 1.
+
+# To do this, cross off every other 0, one pass at a time.
+# If any pass reads an odd number of 0s (a remainder), reject right away.
+# Otherwise if every pass halves the length cleanly,
+# the length must be a power of two (1*2^n for n ≥ 0).
+
+# Note that since the first 0 is never crossed off, we can simply
+# erase it on the first pass and start the count from 1 from then on.
+
+# powers of two
+# Converted from the turingmachinesimulator.com format with txt2yaml.py.
+# Accepting states: accept. All other stops reject.
+input: '0000'
+blank: ' '
+start state: zero
+table:
+  zero:
+    '0': {write: ' ', R: one}
+    ' ': {R: reject}
+  one:
+    # Base case: accept length of 1 = 2^0.
+    '0': {write: 'x', R: even}
+    ' ': {R: accept}
+    'x': R
+  reject:
+  even:
+    # Inductive case: divide by 2 and check for no remainder.
+    '0': {R: odd}
+    # return for another pass
+    ' ': {L: back}
+    'x': R
+  accept:
+  odd:
+    # odd and > 1
+    '0': {write: 'x', R: even}
+    # odd number of 0s on this pass
+    ' ': {R: reject}
+    'x': R
+  back:
+    ' ': {R: one}
+    '0': L
+    'x': L

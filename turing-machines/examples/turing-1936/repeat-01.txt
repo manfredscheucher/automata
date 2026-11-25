@@ -1,0 +1,31 @@
+// repeat 0 1
+// Ported from the turingmachine.io example repeat01:
+// https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/repeat01.yaml
+// Copyright 2015-2021 Andy Li, BSD 3-Clause license, see ../LICENSE-turingmachine-io.
+// The blank ' ' is written as _ here.
+// Example input: none, start with an empty tape.
+//
+// This is the first example machine given by Alan Turing in his 1936 paper
+//   "On Computable Numbers, with an Application to
+//    the Entscheidungsproblem".
+// It simply writes the endless sequence 0 1 0 1 0 1...
+
+name: repeat 0 1
+init: b
+accept: none
+
+b,_
+c,0,>
+
+c,_
+e,_,>
+
+e,_
+f,1,>
+
+f,_
+b,_,>
+
+// (Turing uses the convention of leaving a gap after each output cell,
+// reserving it for marking the cell. For instance, on a tape that
+// contains '0 1x0 0 1 1y1y0y', x marks the leftmost 1 and y marks 110.)

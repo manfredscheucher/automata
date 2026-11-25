@@ -1,0 +1,123 @@
+# binary multiplication
+# Ported from the turingmachine.io example binaryMult:
+# https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/binaryMult.yaml
+# Copyright 2015-2021 Andy Li, BSD 3-Clause license, see ../LICENSE-turingmachine-io.
+# The blank ' ' is written as _ here.
+# Example input: 11*101 (3*5 = 15 (1111 in binary))
+
+# Multiplies two binary numbers together.
+
+# Examples: '11*11' => '1001', '111*110' => '101010'.
+
+# binary multiplication
+# Converted from the turingmachinesimulator.com format with txt2yaml.py.
+# Accepting states: done. All other stops reject.
+input: '11*101'
+blank: ' '
+start state: start
+table:
+  start:
+    # Prefix the input with a '+', and go to the rightmost digit.
+    '0': {L: init}
+    '1': {L: init}
+  init:
+    ' ': {write: '+', R: right}
+  right:
+    '0': R
+    '1': R
+    '*': R
+    ' ': {L: readB}
+  readB:
+    # Read and erase the last digit of the multiplier.
+    # If it's 1, add the current multiplicand.
+    # In any case, double the multiplicand afterwards.
+    '0': {write: ' ', L: doubleL}
+    '1': {write: ' ', L: addA}
+  doubleL:
+    # Double the multiplicand by appending a 0.
+    '0': L
+    '1': L
+    '*': {write: '0', R: shift}
+  addA:
+    '0': L
+    '1': L
+    # enter adder
+    '*': {L: read}
+  read:
+    # This is the 'binary addition' machine almost verbatim.
+    # It's adjusted to keep the '+'
+    # and to lead to another state instead of halting.
+    '0': {write: 'c', L: have0}
+    '1': {write: 'c', L: have1}
+    # keep the +
+    '+': {L: rewrite}
+  shift:
+    # Make room by shifting the multiplier right 1 cell.
+    '0': {write: '*', R: shift0}
+    '1': {write: '*', R: shift1}
+    # base case: multiplier = 0
+    ' ': {L: tidy}
+  double:
+    # return from adder
+    '0': R
+    '1': R
+    '+': R
+    '*': {write: '0', R: shift}
+  shift0:
+    '0': R
+    '1': {write: '0', R: shift1}
+    ' ': {write: '0', R: right}
+  shift1:
+    '0': {write: '1', R: shift0}
+    '1': R
+    ' ': {write: '1', R: right}
+  tidy:
+    '0': {write: ' ', L}
+    '1': {write: ' ', L}
+    '+': {write: ' ', L: done}
+  done:
+  have0:
+    '0': L
+    '1': L
+    '+': {L: add0}
+  have1:
+    '0': L
+    '1': L
+    '+': {L: add1}
+  rewrite:
+    'O': {write: '0', L}
+    'I': {write: '1', L}
+    '0': L
+    '1': L
+    # when done, go to the 'double' state
+    ' ': {R: double}
+  add0:
+    '0': {write: 'O', R: back0}
+    ' ': {write: 'O', R: back0}
+    '1': {write: 'I', R: back0}
+    'O': L
+    'I': L
+  add1:
+    '0': {write: 'I', R: back1}
+    ' ': {write: 'I', R: back1}
+    '1': {write: 'O', L: carry}
+    'O': L
+    'I': L
+  back0:
+    '0': R
+    '1': R
+    'O': R
+    'I': R
+    '+': R
+    'c': {write: '0', L: read}
+  back1:
+    '0': R
+    '1': R
+    'O': R
+    'I': R
+    '+': R
+    'c': {write: '1', L: read}
+  carry:
+    '0': {write: '1', R: back1}
+    ' ': {write: '1', R: back1}
+    '1': {write: '0', L}

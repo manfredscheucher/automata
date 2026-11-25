@@ -1,0 +1,78 @@
+// palindrome
+// Ported from the turingmachine.io example palindrome:
+// https://github.com/aepsilon/turing-machine-viz/blob/master/src/examples/palindrome.yaml
+// Copyright 2015-2021 Andy Li, BSD 3-Clause license, see ../LICENSE-turingmachine-io.
+// The blank ' ' is written as _ here.
+// Example input: abba (try a, ab, bb, babab)
+//
+// Accepts palindromes made of the symbols 'a' and 'b'
+// A palindrome is either the empty string, a single symbol,
+// or a (shorter) palindrome with the same symbol added to both ends.
+
+name: palindrome
+init: start
+accept: accept
+
+start,a
+haveA,_,>
+
+start,b
+haveB,_,>
+
+// empty string
+start,_
+accept,_,>
+
+haveA,a
+haveA,a,>
+
+haveA,b
+haveA,b,>
+
+haveA,_
+matchA,_,<
+
+haveB,a
+haveB,a,>
+
+haveB,b
+haveB,b,>
+
+haveB,_
+matchB,_,<
+
+// same symbol at both ends
+matchA,a
+back,_,<
+
+matchA,b
+reject,b,>
+
+// single symbol
+matchA,_
+accept,_,>
+
+matchB,a
+reject,a,>
+
+// same symbol at both ends
+matchB,b
+back,_,<
+
+// single symbol
+matchB,_
+accept,_,>
+
+back,a
+back,a,<
+
+back,b
+back,b,<
+
+back,_
+start,_,>
+
+// Exercise:
+//
+// • Modify the machine to include 'c' in the symbol alphabet,
+//   so it also works for strings like 'cabbac'.

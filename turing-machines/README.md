@@ -11,7 +11,13 @@ Turing machines with one tape. Every example is there twice: as `.txt` for [turi
 | [duplicate](examples/duplicate) | duplicate a binary string: `01001` becomes `0100101001` or `01001#01001` |
 | [counter](examples/counter) | count in binary forever, or add 1 once |
 | [decimal-to-binary](examples/decimal-to-binary) | turn a decimal number into binary: `13` becomes `1101` |
-| [turingmachine-io](examples/turingmachine-io) | the 15 examples of turingmachine.io by Andy Li, among them binary addition and multiplication, two busy beavers, and the first machine in Turing's 1936 paper |
+| [arithmetic](examples/arithmetic) | add and multiply binary numbers, multiply unary numbers |
+| [divisible-by-3](examples/divisible-by-3) | check whether a binary or decimal number is divisible by 3 |
+| [languages](examples/languages) | decide languages such as w#w and aⁿbⁿcⁿ |
+| [busy-beaver](examples/busy-beaver) | the busy beavers with 3 and 4 states |
+| [turing-1936](examples/turing-1936) | the first machine in Turing's 1936 paper: 0 1 0 1 ... forever |
+
+Many examples come from [turingmachinesimulator.com](https://turingmachinesimulator.com/) and [turingmachine.io](https://turingmachine.io/); each folder says where its files come from, and [THIRD_PARTY.md](../THIRD_PARTY.md) lists them all.
 
 ## Simulator
 
