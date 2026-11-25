@@ -2,7 +2,7 @@
 to the YAML format of turingmachine.io, so it can be viewed there as well.
 
 Usage:   python3 txt2yaml.py <program> [<input>]  > <program>.yaml
-Example: python3 txt2yaml.py ../palindrome/binary-palindrome-simplified.txt 11011
+Example: python3 txt2yaml.py ../examples/palindrome/binary-palindrome-simplified.txt 11011
 
 Differences between the two formats:
 - The blank _ becomes ' '.
